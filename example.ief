@@ -1,0 +1,13 @@
+// Invoice export format
+
+b,Robin BV, straat, 21, 1234aa, Utrecht, 1337666, NLINGB0039308017, INGB
+
+k, Henk BV, R, Harry, , Henk, straat2, 21, 1234aa, Utrecht, 6661337, INGB003NL1389239, INGB
+
+f, 110819, 1
+f, 120719, 2
+
+r, Kaas, 2, 13, 3, 081219, 1908, KG
+r, Kaas 2, 6, 13, 3, 081219, 1908, KG
+
+
