@@ -1,0 +1,12 @@
+INSERT INTO Klant VALUES (1, 'Helma', 'bv', 'NL001234567B01', 'NL91ABNA0417164300', null, 'DABAIE2D');
+INSERT INTO Klant VALUES (2, 'Ericson', 'VOF', 'NL001231231201', null, null, 'DABAIE2D');
+INSERT INTO Klant VALUES (3, 'MarcOtter', 'bv', 'NL001234567B01', 'NL91ABNA0417164300', null, 'DABAIE2D');
+INSERT INTO Adres VALUES (1, 'Steenweg', 'F', '59', '3511JN', 'Utrecht', 'DABAIE2D', 1);
+INSERT INTO Adres VALUES (2, 'Steenweg', 'P', '59', '3511JN', 'Utrecht', 'DABAIE2D', 1);
+INSERT INTO Adres VALUES (3, 'Slootweg', 'A', '32', '3500EE', 'Utrecht', 'DABAIE2D', 1);
+INSERT INTO Adres VALUES (4, '-MOATA', 'F', null, null, null, null, 2);
+INSERT INTO Adres VALUES (4, '-NIPJK', 'A', null, null, null, null, 2);
+INSERT INTO Adres VALUES (5, '-KDLRA', 'F', null, null, null, null, 3);
+INSERT INTO Persoon VALUES (1, 'Jan', null, 'Janssen', '0612345678', '012-3456789', '0', 1);
+INSERT INTO Persoon VALUES (2, 'Henk', 'de', 'Kok', '0666666666', 'henk.de.kok@geenmail.com', 'm', 2);
+INSERT INTO Persoon VALUES (3, 'Marine', 'van', 'Hulst', '03023232301', 'test@test.com', 'v', 3);
