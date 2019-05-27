@@ -3,7 +3,7 @@ package parser;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LineBuilder
+public class FileBuilder
 {
     private List<List<String>> _lines = new ArrayList<>();
     private List<String> _currentLine = new ArrayList<>();

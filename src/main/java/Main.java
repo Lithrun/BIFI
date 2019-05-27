@@ -2,7 +2,7 @@ import model.Address;
 import model.Company;
 import model.Customer;
 import model.InvoiceLine;
-import parser.IefParser;
+import parser.FileParser;
 
 public class Main
 {
@@ -12,7 +12,7 @@ public class Main
         var model = main.GetCompany();
 
         //parse
-        var parser = new IefParser(model);
+        var parser = new FileParser(model);
         var iefFile = parser.Parse();
 
         System.out.println("== file ==");

@@ -1,11 +1,14 @@
-package parser;
+package parser.parsers;
 
 import model.InvoiceLineInformation;
+import parser.IParser;
+import parser.FileBuilder;
+import parser.ParserUtils;
 
 public class InvoiceInformationLineParser extends ParserUtils implements IParser<InvoiceLineInformation>
 {
     @Override
-    public void Parse(LineBuilder builder, InvoiceLineInformation model)
+    public void Parse(FileBuilder builder, InvoiceLineInformation model)
     {
         var items = new String[]
         {
