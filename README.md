@@ -1,13 +1,13 @@
 # BIFI
 
 TODO:
-* MongoDb opzetten
-* MySql opzetten
-* Modelen maken
-* Modelen exporteren naar .eif
-* Jar inlezen
-* Gegevens inlezen in model
-* Gegevens inlezen vanuit jar.
+* MongoDb opzetten - Nynke
+* MySql opzetten - Nick
+* Modelen maken - Robin
+* Modelen exporteren naar .eif - Robin
+* Jar inlezen - Patrick
+* Gegevens inlezen in model - Luuk
+* Gegevens inlezen vanuit jar. - Luuk
 
 
 1. Je runt de JAR (java programma) met CLI argument: maand nummer (e.g 1)
