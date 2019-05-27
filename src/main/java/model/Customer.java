@@ -1,4 +1,6 @@
-class Customer
+package model;
+
+public class Customer
 {
 	private String companyName;
 	private String salutation;

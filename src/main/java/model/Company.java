@@ -1,4 +1,6 @@
-class Company
+package model;
+
+public class Company
 {
 	private String name;
 	private String vatNumber;
