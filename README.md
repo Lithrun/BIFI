@@ -10,7 +10,7 @@ TODO:
 * Gegevens inlezen vanuit jar.
 
 
-1. Je runt de JAR (java programma)
+1. Je runt de JAR (java programma) met CLI argument: maand nummer (e.g 1)
 2. Applicatie haalt alle bedrijven op
 3. Loopt over alle bedrijven en haalt gegevens op.
 4. Stopt gegevens in Model
