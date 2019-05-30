@@ -7,4 +7,5 @@ public class Address
 	private String postalCode;
 	private String city;
 
+	public Address() {}
 }
