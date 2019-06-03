@@ -16,7 +16,7 @@ public class TextLineParser extends ParserUtils implements IParser<TextLine>
             Shorten(120, model.getDescription()),
         };
 
-        builder.AddRange(items);
+        builder.Add(items);
         
     }
 }

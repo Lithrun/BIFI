@@ -13,7 +13,7 @@ public class FileBuilder
         _currentLine.add(value);
     }
     
-    public void AddRange(String[] value)
+    public void Add(String[] value)
     {
         for (var item : value)
         {
@@ -55,6 +55,10 @@ public class FileBuilder
             builder.append("\n");
         }
         
-        return builder.toString();
+        var build = builder.toString();
+        
+        build = build.replaceAll("\n$", "");
+        
+        return build;
     }
 }

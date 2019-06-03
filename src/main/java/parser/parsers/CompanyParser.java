@@ -32,7 +32,7 @@ public class CompanyParser extends ParserUtils implements IParser<Company>
             Shorten(10, model.getBic()),
         };
         
-        builder.AddRange(items);
+        builder.Add(items);
     }
     
     private Address GetAddress(Company model)
