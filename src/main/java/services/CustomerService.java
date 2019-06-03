@@ -18,11 +18,11 @@ public class CustomerService implements ICustomerService {
         for (var customerDao : customerDaos) {
             Mapper mapper = MappingUtil.getMapper();
             var customer = mapper.map(customerDao, Customer.class);
-
-            // TODO: If fields of the customer.Addresses are null, look them up at the .JAR
+            
             customer.setName(customerDao.getPerson().getFirstName());
             customer.setInsertion(customerDao.getPerson().getInsertion());
             customer.setLastName(customerDao.getPerson().getLastName());
+            customers.add(customer);
         }
         session.close();
         return customers;

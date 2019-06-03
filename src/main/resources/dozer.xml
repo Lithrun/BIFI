@@ -11,10 +11,6 @@
         <class-a>persistence.mysql.dao.CustomerDao</class-a>
         <class-b>model.Customer</class-b>
         <field>
-            <a>addresses</a>
-            <b>addresses</b>
-        </field>
-        <field>
             <a>person.firstName</a>
             <b>name</b>
         </field>

@@ -18,25 +18,25 @@ public class CustomerParser extends ParserUtils implements IParser<Customer>
         }
 
         var items = new String[]
-        {
-            "K",
-            Shorten(40, model.getCompanyName()),
-            Shorten(6, model.getSalutation()),
-            Shorten(20, model.getName()),
-            Shorten(7, model.getInsertion()),
-            Shorten(40, model.getLastName()),
+                {
+                        "K",
+                        Shorten(40, model.getCompanyName()),
+                        Shorten(6, model.getSalutation()),
+                        Shorten(20, model.getName()),
+                        Shorten(7, model.getInsertion()),
+                        Shorten(40, model.getLastName()),
 
-            Shorten(60, address.getStreet()),
-            Shorten(10, address.getStreetNumber()),
-            Shorten(6, address.getPostalCode()),
-            Shorten(20, address.getCity()),
+                        Shorten(60, address.getStreet()),
+                        Shorten(10, address.getStreetNumber()),
+                        Shorten(6, address.getPostalCode()),
+                        Shorten(20, address.getCity()),
 
-            Shorten(13, model.getVatNumber()),
-            Shorten(64, model.getIban()),
-            Shorten(10, model.getBic()),
-        };
+                        Shorten(13, model.getVatNumber()),
+                        Shorten(64, model.getIban()),
+                        Shorten(10, model.getBic()),
+                };
 
         builder.AddRange(items);
-        
+
     }
 }

@@ -1,7 +1,5 @@
 package model;
 
-import java.util.List;
-
 public class Customer
 {
 	private String companyName;
@@ -10,7 +8,7 @@ public class Customer
 	private String insertion;
 	private String lastName;
 
-	private List<Address> addresses;
+	private Address address;
 
 	private String vatNumber;
 	private String iban;
@@ -18,85 +16,103 @@ public class Customer
 
 	private InvoiceLine[] invoiceLines;
 
-	public Customer() {}
-
-	public String getCompanyName() {
+	public String getCompanyName()
+	{
 		return companyName;
 	}
 
-	public void setCompanyName(String companyName) {
+	public void setCompanyName(String companyName)
+	{
 		this.companyName = companyName;
 	}
 
-	public String getSalutation() {
+	public String getSalutation()
+	{
 		return salutation;
 	}
 
-	public void setSalutation(String salutation) {
+	public void setSalutation(String salutation)
+	{
 		this.salutation = salutation;
 	}
 
-	public String getName() {
+	public String getName()
+	{
 		return name;
 	}
 
-	public void setName(String name) {
+	public void setName(String name)
+	{
 		this.name = name;
 	}
 
-	public String getInsertion() {
+	public String getInsertion()
+	{
 		return insertion;
 	}
 
-	public void setInsertion(String insertion) {
+	public void setInsertion(String insertion)
+	{
 		this.insertion = insertion;
 	}
 
-	public String getLastName() {
+	public String getLastName()
+	{
 		return lastName;
 	}
 
-	public void setLastName(String lastName) {
+	public void setLastName(String lastName)
+	{
 		this.lastName = lastName;
 	}
 
-	public List<Address> getAddresses() {
-		return addresses;
+	public Address getAddress()
+	{
+		return address;
 	}
 
-	public void setAddresses(List<Address> addresses) {
-		this.addresses = addresses;
+	public void setAddress(Address address)
+	{
+		this.address = address;
 	}
 
-	public String getVatNumber() {
+	public String getVatNumber()
+	{
 		return vatNumber;
 	}
 
-	public void setVatNumber(String vatNumber) {
+	public void setVatNumber(String vatNumber)
+	{
 		this.vatNumber = vatNumber;
 	}
 
-	public String getIban() {
+	public String getIban()
+	{
 		return iban;
 	}
 
-	public void setIban(String iban) {
+	public void setIban(String iban)
+	{
 		this.iban = iban;
 	}
 
-	public String getBic() {
+	public String getBic()
+	{
 		return bic;
 	}
 
-	public void setBic(String bic) {
+	public void setBic(String bic)
+	{
 		this.bic = bic;
 	}
 
-	public InvoiceLine[] getInvoiceLines() {
+	public InvoiceLine[] getInvoiceLines()
+	{
 		return invoiceLines;
 	}
 
-	public void setInvoiceLines(InvoiceLine[] invoiceLines) {
+	public void setInvoiceLines(InvoiceLine[] invoiceLines)
+	{
 		this.invoiceLines = invoiceLines;
 	}
 }
