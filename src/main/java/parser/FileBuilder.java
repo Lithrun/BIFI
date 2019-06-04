@@ -10,6 +10,17 @@ public class FileBuilder
     
     public void Add(String value)
     {
+        if (value == null)
+        {
+            value = "";
+        }
+        
+        //Replace al , with \, so it won't interfere with the CSV format
+        if (value.contains(","))
+        {
+           value = value.replaceAll("\\,", "\\\\,");
+        }
+        
         _currentLine.add(value);
     }
     
@@ -17,7 +28,7 @@ public class FileBuilder
     {
         for (var item : value)
         {
-            _currentLine.add(item);
+            Add(item);
         }
     }
     

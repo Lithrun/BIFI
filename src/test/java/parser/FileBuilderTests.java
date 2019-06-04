@@ -68,4 +68,22 @@ public class FileBuilderTests
 
         assertEquals("hallo,test,world", build);
     }
+    
+    @Test
+    public void FileBuilderTestComma()
+    {
+        var fileBuilder = new FileBuilder();
+
+        var items = new String[]
+        {
+            "hallo,",
+            "test",
+            "world"
+        };
+        fileBuilder.Add(items);
+
+        var build = fileBuilder.Build();
+
+        assertEquals("hallo\\,,test,world", build);
+    }
 }
