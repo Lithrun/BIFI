@@ -3,8 +3,8 @@
 TODO:
 * MongoDb opzetten - Nynke
 * MySql opzetten - Nick
-* Modelen maken - Robin
-* Modelen exporteren naar .eif - Robin
+* 🗹 - Modelen maken - Robin
+* 🗹 - Modelen exporteren naar .eif - Robin
 * Jar inlezen - Patrick
 * Gegevens inlezen in model - Luuk
 * Gegevens inlezen vanuit jar. - Luuk
@@ -24,4 +24,3 @@ Rekening houden met:
 * Textregel wordt aangemaakt als factuur regel omscrhijving langer dan 60 chars is.
 * dobuel (5,2): 10,04 = 0001004
 * Indien staatnaam begint met een - dan wordt het addres uit de jar gehaald.
-* 
