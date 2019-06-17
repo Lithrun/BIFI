@@ -21,7 +21,7 @@ public class InvoiceLineParser extends ParserUtils implements IParser<InvoiceLin
             Shorten(6, model.getUnit())
         };
 
-        builder.AddRange(items);
+        builder.Add(items);
         
     }
 }
