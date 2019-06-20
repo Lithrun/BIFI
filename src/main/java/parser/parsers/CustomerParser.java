@@ -36,7 +36,7 @@ public class CustomerParser extends ParserUtils implements IParser<Customer>
             Shorten(10, model.getBic()),
         };
 
-        builder.AddRange(items);
+        builder.Add(items);
         
     }
 }
