@@ -4,27 +4,24 @@ import java.sql.Date;
 
 public class InvoiceLine
 {
-	private String description;
+	private String btwCode;
+	private int productId;
+	private String productName;
 	private double quantity;
-	private double priceExclVat;
-	//1 = 0, 2 = laag, 3 = hoog
-	private int vatType;
-	private Date date;
+	private double totalPrice;
 	private String unit;
 
-	private InvoiceLineInformation[] invoiceLineInformations;
-	private TextLine textLine;
+	public String getBtwCode() {return btwCode;}
 
+	public void setBtwCode(String newBtwCode) {btwCode = newBtwCode;}
 
-	public String getDescription()
-	{
-		return description;
-	}
+	public int getProductId() {return productId;}
 
-	public void setDescription(String description)
-	{
-		this.description = description;
-	}
+	public void setProductId(int newProductId) {productId = newProductId;}
+
+	public String getProductName() {return productName;}
+
+	public void setProductName(String newProductName) {productName = newProductName;}
 
 	public double getQuantity()
 	{
@@ -36,35 +33,9 @@ public class InvoiceLine
 		this.quantity = quantity;
 	}
 
-	public double getPriceExclVat()
-	{
-		return priceExclVat;
-	}
+	public double getTotalPrice() {return totalPrice;}
 
-	public void setPriceExclVat(double priceExclVat)
-	{
-		this.priceExclVat = priceExclVat;
-	}
-
-	public int getVatType()
-	{
-		return vatType;
-	}
-
-	public void setVatType(int vatType)
-	{
-		this.vatType = vatType;
-	}
-
-	public Date getDate()
-	{
-		return date;
-	}
-
-	public void setDate(Date date)
-	{
-		this.date = date;
-	}
+	public void setTotalPrice(double newTotalPrice) {totalPrice = newTotalPrice;}
 
 	public String getUnit()
 	{
@@ -74,25 +45,5 @@ public class InvoiceLine
 	public void setUnit(String unit)
 	{
 		this.unit = unit;
-	}
-
-	public InvoiceLineInformation[] getInvoiceLineInformations()
-	{
-		return invoiceLineInformations;
-	}
-
-	public void setInvoiceLineInformations(InvoiceLineInformation[] invoiceLineInformations)
-	{
-		this.invoiceLineInformations = invoiceLineInformations;
-	}
-
-	public TextLine getTextLine()
-	{
-		return textLine;
-	}
-
-	public void setTextLine(TextLine textLine)
-	{
-		this.textLine = textLine;
 	}
 }

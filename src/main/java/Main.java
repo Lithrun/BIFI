@@ -65,7 +65,7 @@ public class Main
         customer1.setBic("lkfdg");
         
         var invoiceLines = GetInvoiceLineCustomer1();
-        customer1.setInvoiceLines(invoiceLines);
+        customer1.setInvoices(invoices);
         
         var customer2 = new Customer();
         

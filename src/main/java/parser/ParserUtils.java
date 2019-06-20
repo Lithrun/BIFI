@@ -7,9 +7,6 @@ public class ParserUtils
 {
     /**
      * Shorten string if the length excites the max length
-     * @param maxLength
-     * @param value
-     * @return
      */
     public String Shorten(int maxLength, String value)
     {
@@ -28,8 +25,6 @@ public class ParserUtils
 
     /**
      * Format date to ddMMyy
-     * @param date 
-     * @return
      */
     public String Format(Date date)
     {
@@ -43,10 +38,6 @@ public class ParserUtils
 
     /**
      * Format a double from 10.04 to 0001004 depending on parameters
-     * @param precision amount of leading zeros for the integral value 
-     * @param scale amount of trailing zeros for the fractional value  
-     * @param value
-     * @return
      */
     public String Format(int precision, int scale, double value)
     {
@@ -64,7 +55,6 @@ public class ParserUtils
     
     /**
      * Java's right pad is weird
-     * @return
      */
     //It's not duplicated, the adding of the str is different
     @SuppressWarnings("Duplicates")
@@ -87,7 +77,6 @@ public class ParserUtils
 
     /**
      * Java's right pad is weird
-     * @return
      */
     //It's not duplicated, the adding of the str is different
     @SuppressWarnings("Duplicates")

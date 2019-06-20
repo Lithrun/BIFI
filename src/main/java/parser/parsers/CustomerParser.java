@@ -34,6 +34,7 @@ public class CustomerParser extends ParserUtils implements IParser<Customer>
             Shorten(13, model.getVatNumber()),
             Shorten(64, model.getIban()),
             Shorten(10, model.getBic()),
+                //TODO customerId toevoegen
         };
 
         builder.Add(items);
