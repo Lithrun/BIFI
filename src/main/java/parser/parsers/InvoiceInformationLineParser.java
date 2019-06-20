@@ -17,7 +17,7 @@ public class InvoiceInformationLineParser extends ParserUtils implements IParser
             Shorten(10, model.getInvoiceNumber())
         };
 
-        builder.AddRange(items);
+        builder.Add(items);
         
     }
 }
