@@ -1,7 +1,7 @@
 # BIFI
 
 TODO:
-* MongoDb opzetten - Nynke
+* MongoDb opzetten en connectie maken met de server - Nynke
 * MySql opzetten - Nick
 * 🗹 - Modelen maken - Robin
 * 🗹 - Modelen exporteren naar .eif - Robin
