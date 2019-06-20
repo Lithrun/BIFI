@@ -1,12 +1,14 @@
 package persistence.jar;
 
-import java.util.Map;
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.Test;
 
-class JarUtilTest {
+import java.util.Map;
+
+import static org.junit.Assert.assertEquals;
+
+public class JarUtilTest {
     @Test
-    void getTest() {
+    public void getTest() {
         JarUtil.open();
         Map<String, String> address = JarUtil.get("MOATA");
         JarUtil.close();
