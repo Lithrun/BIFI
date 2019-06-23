@@ -7,10 +7,7 @@ public class InvoiceLineInformation
     private Date date;
     private String invoiceNumber;
 
-    public Date getDate()
-    {
-        return date;
-    }
+    public Date getDate() { return date; }
 
     public void setDate(Date date)
     {

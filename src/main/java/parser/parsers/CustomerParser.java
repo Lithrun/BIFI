@@ -9,13 +9,10 @@ import parser.ParserUtils;
 public class CustomerParser extends ParserUtils implements IParser<Customer>
 {
     @Override
-    public void Parse(FileBuilder builder, Customer model)
+    public void parse(FileBuilder builder, Customer model)
     {
         var address = model.getAddress();
-        if (address == null)
-        {
-            address = new Address();
-        }
+        if (address == null) { address = new Address(); }
 
         var items = new String[]
         {
@@ -36,7 +33,6 @@ public class CustomerParser extends ParserUtils implements IParser<Customer>
             Shorten(10, model.getBic()),
         };
 
-        builder.Add(items);
-        
+        builder.add(items);
     }
 }

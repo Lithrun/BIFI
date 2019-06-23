@@ -13,7 +13,7 @@ public class Main
 
         //parse
         var parser = new FileParser(model);
-        var iefFile = parser.Parse();
+        var iefFile = parser.parse();
 
         System.out.println("== file ==");
         System.out.println(iefFile);

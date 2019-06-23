@@ -7,14 +7,12 @@ public class InvoiceLine
 	private String description;
 	private double quantity;
 	private double priceExclVat;
-	//1 = 0, 2 = laag, 3 = hoog
-	private int vatType;
+	//TODO maken vatType an enum with 0, high/hoog, low/laag
+	private int vatType; // 1 = 0, 2 = laag, 3 = hoog
 	private Date date;
 	private String unit;
-
 	private InvoiceLineInformation[] invoiceLineInformations;
 	private TextLine textLine;
-
 
 	public String getDescription()
 	{
@@ -81,10 +79,7 @@ public class InvoiceLine
 		return invoiceLineInformations;
 	}
 
-	public void setInvoiceLineInformations(InvoiceLineInformation[] invoiceLineInformations)
-	{
-		this.invoiceLineInformations = invoiceLineInformations;
-	}
+	public void setInvoiceLineInformations(InvoiceLineInformation[] invoiceLineInformations) { this.invoiceLineInformations = invoiceLineInformations; }
 
 	public TextLine getTextLine()
 	{

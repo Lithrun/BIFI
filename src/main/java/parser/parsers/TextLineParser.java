@@ -8,7 +8,7 @@ import parser.ParserUtils;
 public class TextLineParser extends ParserUtils implements IParser<TextLine>
 {
     @Override
-    public void Parse(FileBuilder builder, TextLine model)
+    public void parse(FileBuilder builder, TextLine model)
     {
         var items = new String[]
         {
@@ -16,7 +16,6 @@ public class TextLineParser extends ParserUtils implements IParser<TextLine>
             Shorten(120, model.getDescription()),
         };
 
-        builder.Add(items);
-        
+        builder.add(items);
     }
 }
