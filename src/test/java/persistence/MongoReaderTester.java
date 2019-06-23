@@ -2,6 +2,7 @@ package persistence;
 
 import com.mongodb.client.MongoCollection;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import javax.swing.text.Document;
@@ -27,13 +28,19 @@ public class MongoReaderTester {
 
     @Test
     public void testInvoiceFiller(){
-        Document document = new Document();
+//        Document document = new Document();
 
-        assertEquals(mongoReader.fillInvoice(document), "test");
+//        assertEquals(mongoReader.fillInvoice(document), "test");
     }
 
     @Test
     public void testInvoiceLineFiller() {
-        assertEquals(mongoReader.fillInvoice(document, invoice), "test");
+//        assertEquals(mongoReader.fillInvoice(document, invoice), "test");
     }
+
+    @Test
+    public void testInvoiceLoader() {
+        assertEquals(mongoReader.getAllInvoices().size(), 5);
+    }
+
 }
