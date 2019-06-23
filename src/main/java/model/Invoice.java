@@ -17,15 +17,15 @@ public class Invoice {
 
     public int getCustomerId() {return customerId;}
 
-    public void setCustomerId(int newCustomerId) {customerId = newCustomerId;}
+    public void setCustomerId(int customerId) {this.customerId = customerId;}
 
     public int getInvoiceId() {return invoiceId;}
 
-    public void setInvoiceId(int newInvoiceId) {invoiceId = newInvoiceId;}
+    public void setInvoiceId(int invoiceId) {this.invoiceId = invoiceId;}
 
     public Date getDate() {return date;}
 
-    public void setDate(Date newDate) {date = newDate;}
+    public void setDate(Date date) {this.date = date;}
 
     public ArrayList<InvoiceLine> getInvoiceLines() {return invoiceLines;}
 
@@ -33,10 +33,10 @@ public class Invoice {
 
     public String getNote() {return note;}
 
-    public void setNote(String newNote) {note = newNote;}
+    public void setNote(String note) {this.note = note;}
 
     public int getPersonId() {return invoiceId;}
 
-    public void setPersonId(int newPersonId) {personId = newPersonId;}
+    public void setPersonId(int personId) {this.personId = personId;}
 
 }

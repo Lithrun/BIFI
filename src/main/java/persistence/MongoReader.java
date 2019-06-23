@@ -37,8 +37,6 @@ public class MongoReader {
         return mongoCollection;
     }
 
-    //@Luuk zie in de test dat ik de connectie wil testen, maar weet niet helemaal hoe en wat en of ik moet mocken oid, omdat ik een MongoCollection terug geef, maar weet niet goed hoe dat er dan eigenlijk uit ziet.
-
     public void fillInvoice(Document document) {
         Invoice invoice = new Invoice();
         invoice.setCustomerId(document.getInteger("customerId"));
@@ -53,15 +51,13 @@ public class MongoReader {
         invoices.add(invoice);
     }
 
-    //@Luuk zie ook hiervoor bij de tests, moet ik mocken? Of gewoon iets instantiëren? Twijfel hierover. Zelfde geldt voor de methode hierboven en hieronder.
-
     public void fillInvoiceLines(Document line, Invoice invoice) {
         InvoiceLine invoiceLine = new InvoiceLine();
         invoiceLine.setBtwCode(line.getString("btwCode"));
         invoiceLine.setProductId(line.getInteger("productId"));
         invoiceLine.setProductName(line.getString("productName"));
         invoiceLine.setQuantity(line.getInteger("quantity"));
-        invoiceLine.setTotalPrice(line.getInteger("totalPrice"));
+//        invoiceLine.setTotalPrice(line.getInteger("totalPrice"));
         invoiceLine.setUnit(line.getString("unit"));
         invoice.setInvoiceLine(invoiceLine);
     }
