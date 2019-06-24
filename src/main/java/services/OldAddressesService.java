@@ -2,28 +2,29 @@ package services;
 
 import model.Address;
 import model.Customer;
-import persistence.jar.JarUtil;
-import persistence.jar.MappingUtil;
+import persistence.jar.OldAddressJarDataFactory;
+import persistence.jar.generic.JarDataFactory;
 import services.generic.IOldAddressesService;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 public class OldAddressesService implements IOldAddressesService {
-    private static final Logger LOGGER = Logger.getLogger( OldAddressesService.class.getName() );
+    private JarDataFactory<Address> jarDataFactory = new OldAddressJarDataFactory();
 
     public Address getByCustomer(Customer customer) {
-        Address address = customer.getAddress();
-        if (address != null && address.getStreet() != null && address.getStreet().startsWith("-")) {
-            String key = address.getStreet().substring(1);
-
-            // Get the old address
-            JarUtil.open();
-            address = MappingUtil.loadAddress(JarUtil.get(key));
-            JarUtil.close();
-        } else {
-            LOGGER.log(Level.FINE, "warning: no key found to lookup old addresses from jar.");
+        Address customerAddress = customer.getAddress();
+        if (isRefferencingToAnOldAddress(customerAddress.getStreet())) {
+            return getOldAddressFromJar(customerAddress);
         }
-        return address;
+        return customerAddress;
+    }
+
+    private Address getOldAddressFromJar(Address address) {
+        jarDataFactory.open();
+        Address oldAddressFromJar = jarDataFactory.get(address.getStreet());
+        jarDataFactory.close();
+        return oldAddressFromJar;
+    }
+
+    private boolean isRefferencingToAnOldAddress(String value) {
+        return value.matches("-[A-Z]+");
     }
 }
