@@ -2,6 +2,8 @@ package persistence.jar;
 
 import model.Address;
 import org.easymock.TestSubject;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import persistence.jar.generic.MappingFactory;
 
@@ -13,19 +15,52 @@ import static org.junit.Assert.assertEquals;
 
 public class OldAddressMappingFactoryTest {
     @TestSubject
-    MappingFactory<Address> mappingFactory = new OldAddressMappingFactory();
+    private MappingFactory<Address> mappingFactory = new OldAddressMappingFactory();
 
-    private Map<String, String> mapStub = new HashMap<>();
+    private Map<String, String> mapStub;
+
+    @Before
+    public void beforeEach() {
+        mapStub = new HashMap<>();
+    }
+
+    @After
+    public void afterEach() {
+        mapStub = null;
+    }
 
     @Test
     public void convertFromMapTest() {
-        mapStub.put("plaats", "Testplaats");
-        mapStub.put("STRAAT", "Teststraat");
-        mapStub.put("HUISNUMMER", "1");
-        mapStub.put("POSTCODE", "1234TE");
+        initializeAllFakeMapData();
 
         Address result = mappingFactory.convertFromMap(mapStub);
 
-        assertEquals("Teststraat", mappingFactory.convertFromMap(mapStub).getStreet());
+        assertEquals("Teststraat", result.getStreet());
+        assertEquals("1", result.getStreetNumber());
+        assertEquals("Testplaats", result.getCity());
+        assertEquals("1234AB", result.getPostalCode());
+    }
+
+    @Test
+    public void convertFromMapWithNullValues() {
+        initializeAllFakeMapDataExceptPostalCode();
+
+        Address result = mappingFactory.convertFromMap(mapStub);
+
+        assertEquals("Teststraat", result.getStreet());
+        assertEquals("1", result.getStreetNumber());
+        assertEquals("Testplaats", result.getCity());
+        assertEquals("", result.getPostalCode());
+    }
+
+    private void initializeAllFakeMapData() {
+        initializeAllFakeMapDataExceptPostalCode();
+        mapStub.put("POSTCODE", "1234AB");
+    }
+
+    private void initializeAllFakeMapDataExceptPostalCode() {
+        mapStub.put("plaats", "Testplaats");
+        mapStub.put("STRAAT", "Teststraat");
+        mapStub.put("HUISNUMMER", "1");
     }
 }

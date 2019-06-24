@@ -10,18 +10,22 @@ class OldAddressDTO {
     }
 
     String getStreet() {
-        return data.get("STRAAT").toString();
+        return getDataString("STRAAT");
     }
 
     String getCity() {
-        return data.get("plaats").toString();
+        return getDataString("plaats");
     }
 
     String getStreetNumber() {
-        return data.get("HUISNUMMER").toString();
+        return getDataString("HUISNUMMER");
     }
 
     String getPostalCode() {
-        return data.get("POSTCODE").toString();
+        return getDataString("POSTCODE");
+    }
+
+    private String getDataString(String key) {
+        return data.containsKey(key) ? data.get(key).toString() : "";
     }
 }
