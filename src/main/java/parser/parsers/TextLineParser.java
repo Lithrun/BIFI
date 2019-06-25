@@ -1,8 +1,8 @@
 package parser.parsers;
 
 import model.TextLine;
-import parser.IParser;
 import parser.FileBuilder;
+import parser.IParser;
 import parser.ParserUtils;
 
 public class TextLineParser extends ParserUtils implements IParser<TextLine>
@@ -13,7 +13,7 @@ public class TextLineParser extends ParserUtils implements IParser<TextLine>
         var items = new String[]
         {
             "T",
-            Shorten(120, model.getDescription()),
+                shortenStringValue(120, model.getDescription()),
         };
 
         builder.add(items);

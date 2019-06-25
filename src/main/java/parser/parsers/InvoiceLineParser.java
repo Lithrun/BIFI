@@ -14,11 +14,11 @@ public class InvoiceLineParser extends ParserUtils implements IParser<InvoiceLin
         {
             "R",
 //            Shorten(60, model.getDescription()),
-            Format(3, 2, model.getQuantity()),
+                formatValue(3, 2, model.getQuantity()),
 //            Format(3, 2, model.getPriceExclVat()),
 //            Integer.toString(model.getVatType()),
 //            Format(model.getDate()),
-            Shorten(6, model.getUnit())
+                shortenStringValue(6, model.getUnit())
         };
 
         builder.add(items);

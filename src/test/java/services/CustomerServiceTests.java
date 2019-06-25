@@ -1,26 +1,24 @@
 package services;
 
-import org.easymock.EasyMockRunner;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import persistence.mysql.dao.CustomerDao;
 
 import java.util.ArrayList;
 
 import static org.easymock.EasyMock.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@RunWith(EasyMockRunner.class)
 public class CustomerServiceTests {
 
     private SessionFactory sessionFactory;
     private Session session;
     private Query<CustomerDao> query;
-    @Before
+
+    @BeforeEach
     public void setUp() {
         sessionFactory = createMock(SessionFactory.class);
         session = createMock(Session.class);
@@ -50,11 +48,10 @@ public class CustomerServiceTests {
 
         var customers = service.getAll();
 
-        Assert.assertEquals(customers.size(), daos.size());
+        assertEquals(customers.size(), daos.size());
 
         verify(sessionFactory);
         verify(session);
         verify(query);
     }
-
 }
