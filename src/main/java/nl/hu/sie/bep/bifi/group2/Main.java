@@ -3,7 +3,6 @@ package nl.hu.sie.bep.bifi.group2;
 import nl.hu.sie.bep.bifi.group2.model.Address;
 import nl.hu.sie.bep.bifi.group2.model.Company;
 import nl.hu.sie.bep.bifi.group2.model.Customer;
-import nl.hu.sie.bep.bifi.group2.model.InvoiceLine;
 import nl.hu.sie.bep.bifi.group2.parser.FileParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,12 +24,7 @@ public class Main
         LOGGER.info(iefFile);
     }
 
-    private Main()
-    {
-        //ignore
-    }
-
-    public Company getCompany()
+    private Company getCompany()
     {
         var companyAddress = new Address();
         companyAddress.setCity("Utrecht");
