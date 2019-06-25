@@ -2,15 +2,15 @@ package nl.hu.sie.bep.bifi.group2.persistence.jar;
 
 import nl.hu.sie.bep.bifi.group2.model.Address;
 import org.easymock.TestSubject;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
 import nl.hu.sie.bep.bifi.group2.persistence.jar.generic.MappingFactory;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.junit.Assert.assertEquals;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 
 public class OldAddressMappingFactoryTest {
@@ -19,12 +19,12 @@ public class OldAddressMappingFactoryTest {
 
     private Map<String, String> mapStub;
 
-    @Before
+    @BeforeEach
     public void beforeEach() {
         mapStub = new HashMap<>();
     }
 
-    @After
+    @AfterEach
     public void afterEach() {
         mapStub = null;
     }
