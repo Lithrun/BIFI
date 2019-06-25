@@ -15,7 +15,7 @@ public class Customer
 	private String bic;
 	private int customerId;
 	private ArrayList<Invoice> invoices = new ArrayList<Invoice>();
-  private int personId;
+  	private int personId;
 
 	public String getCompanyName()
 	{

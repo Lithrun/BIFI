@@ -27,12 +27,21 @@ public class MongoReader {
 
     public MongoCollection<Document> connectToDatabase() {
         MongoClientURI uri = new MongoClientURI("mongodb+srv://Nynke:Tester123@clusterfriendspammer-fvgbf.mongodb.net/test?retryWrites=true&w=majority");
+        MongoClient mongoClient = null;
+        MongoCollection<Document> mongoCollection = null;
+        MongoDatabase database;
 
-        MongoClient mongoClient = new MongoClient(uri);
-
-        MongoDatabase database = mongoClient.getDatabase("BiFiBEP02");
-
-        MongoCollection<Document> mongoCollection = database.getCollection("bifi");
+        try {
+            mongoClient = new MongoClient(uri);
+            database = mongoClient.getDatabase("BiFiBEP02");
+            mongoCollection = database.getCollection("bifi");
+        }
+        catch (MongoException mongoException) {
+            mongoException.printStackTrace();
+        }
+        finally {
+            mongoClient.close();
+        }
 
         return mongoCollection;
     }
@@ -57,7 +66,7 @@ public class MongoReader {
         invoiceLine.setProductId(line.getInteger("productId"));
         invoiceLine.setProductName(line.getString("productName"));
         invoiceLine.setQuantity(line.getInteger("quantity"));
-//        invoiceLine.setTotalPrice(line.getInteger("totalPrice"));
+        invoiceLine.setTotalPrice(line.getInteger("totalPrice"));
         invoiceLine.setUnit(line.getString("unit"));
         invoice.setInvoiceLine(invoiceLine);
     }
