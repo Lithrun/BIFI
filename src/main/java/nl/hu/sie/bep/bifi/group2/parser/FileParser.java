@@ -12,9 +12,14 @@ import java.lang.reflect.ParameterizedType;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
+
 public class FileParser<T>
 {
     private T model;
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(FileParser.class);
 
     //Can be made static or can be done by static constructors or something
     private Map<Class<?>, Class<?>> parserCache = new HashMap<>();
@@ -41,7 +46,7 @@ public class FileParser<T>
         return builder.build();
     }
 
-    private <MT> void parse(FileBuilder builder, MT model)
+    private <M> void parse(FileBuilder builder, M model)
     {
         var modelClass = model.getClass();
         var parser = getParser(modelClass);
@@ -96,7 +101,7 @@ public class FileParser<T>
         }
         catch (IllegalAccessException|InvocationTargetException|NoSuchMethodException e)
         {
-            e.printStackTrace();
+            LOGGER.info("getValue", e);
         }
         
         return null;
@@ -108,6 +113,7 @@ public class FileParser<T>
         {
             return tryCreateParser(parserCache.get(model));
         }
+
         
         for (var parser : parsers)
         {
@@ -160,6 +166,7 @@ public class FileParser<T>
         }
         catch (IntrospectionException e)
         {
+            LOGGER.info("getProperties - IntrospectionException");
             e.printStackTrace();
             return new PropertyDescriptor[0];
         }

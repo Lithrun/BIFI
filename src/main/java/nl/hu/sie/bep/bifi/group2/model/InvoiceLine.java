@@ -6,7 +6,7 @@ public class InvoiceLine
     private int productId;
     private String productName;
     private int quantity;
-    private int totalPrice;
+    private double totalPrice;
 	private String unit;
 
     public String getBtwCode() {
@@ -42,11 +42,11 @@ public class InvoiceLine
         this.quantity = quantity;
     }
 
-    public int getTotalPrice() {
+    public double getTotalPrice() {
         return totalPrice;
     }
 
-    public void setTotalPrice(int totalPrice) {
+    public void setTotalPrice(double totalPrice) {
         this.totalPrice = totalPrice;
     }
 
