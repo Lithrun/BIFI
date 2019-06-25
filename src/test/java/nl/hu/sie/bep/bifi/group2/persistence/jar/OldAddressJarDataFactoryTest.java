@@ -4,18 +4,17 @@ import nl.hu.sie.bep.bifi.group2.model.Address;
 import org.easymock.EasyMockSupport;
 import org.easymock.Mock;
 import org.easymock.TestSubject;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
 import nl.hu.sie.bep.bifi.group2.persistence.jar.generic.JarDataFactory;
 import nl.hu.sie.bep.bifi.group2.persistence.jar.generic.MappingFactory;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import static org.easymock.EasyMock.expect;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
 
 public class OldAddressJarDataFactoryTest extends EasyMockSupport {
     @TestSubject
@@ -33,14 +32,14 @@ public class OldAddressJarDataFactoryTest extends EasyMockSupport {
         return address;
     }
 
-    @Before
+    @BeforeEach
     public void beforeEach() {
         mappingFactoryMock = mock(OldAddressMappingFactory.class);
         testSubject = new OldAddressJarDataFactory(mappingFactoryMock);
         testSubject.open();
     }
 
-    @After
+    @AfterEach
     public void afterEach() {
         testSubject.close();
         testSubject = null;
