@@ -1,10 +1,8 @@
 package nl.hu.sie.bep.bifi.group2.services.company;
 
 import nl.hu.sie.bep.bifi.group2.model.Company;
-import nl.hu.sie.bep.bifi.group2.persistence.mysql.MySqlUtil;
 import nl.hu.sie.bep.bifi.group2.services.customer.CustomerService;
 import nl.hu.sie.bep.bifi.group2.services.invoices.InvoiceService;
-import org.hibernate.SessionFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,16 +10,14 @@ import java.util.stream.Collectors;
 
 public class CompanyService
 {
-    private SessionFactory _sessionFactory;
+
     private CustomerService _customerService;
     private InvoiceService _invoiceService;
     
     public CompanyService()
     {
-        _sessionFactory = MySqlUtil.createSessionFactory();
-
-        _customerService = new CustomerService(); //todo DI :)
-        _invoiceService = new InvoiceService(); //todo DI :)
+        _customerService = new CustomerService();
+        _invoiceService = new InvoiceService();
     }
     
     public List<Company> getCompanies(int month)
