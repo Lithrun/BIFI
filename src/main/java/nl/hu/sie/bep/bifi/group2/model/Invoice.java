@@ -9,6 +9,7 @@ public class Invoice {
     private Date date;
     private ArrayList<InvoiceLine> invoiceLines = new ArrayList<>();
     private String note;
+    private int personId;
 
     public Invoice() {
     }
