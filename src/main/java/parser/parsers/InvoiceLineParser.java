@@ -8,7 +8,7 @@ import parser.ParserUtils;
 public class InvoiceLineParser extends ParserUtils implements IParser<InvoiceLine>
 {
     @Override
-    public void Parse(FileBuilder builder, InvoiceLine model)
+    public void parse(FileBuilder builder, InvoiceLine model)
     {
         var items = new String[]
         {
@@ -21,7 +21,6 @@ public class InvoiceLineParser extends ParserUtils implements IParser<InvoiceLin
             Shorten(6, model.getUnit())
         };
 
-        builder.Add(items);
-        
+        builder.add(items);
     }
 }

@@ -5,10 +5,10 @@ import java.util.List;
 
 public class FileBuilder
 {
-    private List<List<String>> _lines = new ArrayList<>();
-    private List<String> _currentLine = new ArrayList<>();
+    private List<List<String>> lines = new ArrayList<>();
+    private List<String> currentLine = new ArrayList<>();
     
-    public void Add(String value)
+    public void add(String value)
     {
         if (value == null)
         {
@@ -21,34 +21,34 @@ public class FileBuilder
            value = value.replaceAll("\\,", "\\\\,");
         }
         
-        _currentLine.add(value);
+        currentLine.add(value);
     }
     
-    public void Add(String[] value)
+    public void add(String[] value)
     {
         for (var item : value)
         {
-            Add(item);
+            add(item);
         }
     }
     
-    public void NextLine()
+    public void nextLine()
     {
-        if (_currentLine.size() > 0)
+        if (currentLine.size() > 0)
         {
-            _lines.add(_currentLine);
+            lines.add(currentLine);
         }
         
-        _currentLine = new ArrayList<>();
+        currentLine = new ArrayList<>();
     }
     
-    public String Build()
+    public String build()
     {
-        NextLine();
+        nextLine();
         
         var builder = new StringBuilder();
         
-        for (var line : _lines)
+        for (var line : lines)
         {
             var size = line.size();
             for (var i = 0; i < size; i++)

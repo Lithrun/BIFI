@@ -9,16 +9,13 @@ public class Customer
 	private String name;
 	private String insertion;
 	private String lastName;
-
 	private Address address;
-
 	private String vatNumber;
 	private String iban;
 	private String bic;
-
 	private int customerId;
-
 	private ArrayList<Invoice> invoices = new ArrayList<Invoice>();
+  private int personId;
 
 	public String getCompanyName()
 	{
@@ -123,4 +120,8 @@ public class Customer
 	public int getCustomerId() {return customerId;}
 
 	public void setCustomerId(int customerId) {this.customerId = customerId;}
+  
+  public int getPersonId() {return personId;}
+
+	public void setPersonId(int personId) {this.personId = personId;}
 }

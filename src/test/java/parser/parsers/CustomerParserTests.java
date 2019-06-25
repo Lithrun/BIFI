@@ -11,12 +11,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class CustomerParserTests
 {
-    private IParser _parser;
+    private IParser parser;
     
     @BeforeEach
     public void Before()
     {
-        _parser = new CustomerParser();
+        parser = new CustomerParser();
     }
     
     @Test
@@ -41,8 +41,8 @@ public class CustomerParserTests
         customer.setAddress(address);
         
         var builder = new FileBuilder();
-        _parser.Parse(builder, customer);
-        var result = builder.Build();
+        parser.parse(builder, customer);
+        var result = builder.build();
         
         var expected = "K,company,test,test name,insert,harry,street,21a,1234aa,utrecht,vat,iban,bic";
         assertEquals(expected, result);
@@ -62,8 +62,8 @@ public class CustomerParserTests
         customer.setBic("bic");
 
         var builder = new FileBuilder();
-        _parser.Parse(builder, customer);
-        var result = builder.Build();
+        parser.parse(builder, customer);
+        var result = builder.build();
 
         var expected = "K,company,test,test name,insert,harry,,,,,vat,iban,bic";
         assertEquals(expected, result);
@@ -91,8 +91,8 @@ public class CustomerParserTests
         customer.setAddress(address);
         
         var builder = new FileBuilder();
-        _parser.Parse(builder, customer);
-        var result = builder.Build();
+        parser.parse(builder, customer);
+        var result = builder.build();
         
         var expected = "K,0123456789012345678901234567890123456789,test,test name,insert,harry,street,21a,1234aa,utrecht,vat,iban,bic";
         assertEquals(expected, result);
