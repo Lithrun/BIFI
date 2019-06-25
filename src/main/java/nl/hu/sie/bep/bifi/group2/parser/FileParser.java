@@ -55,42 +55,36 @@ public class FileParser<T>
         
         var properties = getProperties(modelClass);
         
-        for( var property : properties)
+        for(var property : properties)
         {
             var type = property.getPropertyType();
-            
-            //if array, we want to do the same for every item
+            var value = getValue(model, property.getName());
+            if (value == null) continue;
             if(type.isArray())
             {
-                var value = getValue(model, property.getName());
-                if (value == null)
-                {
-                    continue;
-                }
-                
-                for (var i = 0; i < Array.getLength(value); i++)
-                {
-                    var arrayValue = Array.get(value, i);
-                    if (arrayValue == null)
-                    {
-                        continue;
-                    }
-                    
-                    parse(builder, arrayValue);
-                }
-                
+                handleArray(builder, value);
             }
-            //If its a class we try get a parser also
+
             else if (type.getClassLoader() != null)
             {
-                var value = getValue(model, property.getName());
-                if (value == null)
-                {
-                    continue;
-                }
-                
-                parse(builder, value);
+                handleClassLoader(builder, value);
             }
+        }
+    }
+
+    private void handleClassLoader(FileBuilder builder, Object value) {
+        parse(builder, value);
+    }
+
+    private void handleArray(FileBuilder builder, Object value) {
+        for (var i = 0; i < Array.getLength(value); i++)
+        {
+            var arrayValue = Array.get(value, i);
+            if (arrayValue == null)
+            {
+                continue;
+            }
+            parse(builder, arrayValue);
         }
     }
 
