@@ -15,7 +15,7 @@ public class CompanyParser extends ParserUtils implements IParser<Company>
     @Override
     public void parse(FileBuilder builder, Company model)
     {
-        var address = GetAddress(model);
+        var address = getAddress(model);
         
         var items = new String[]
         {
@@ -35,7 +35,7 @@ public class CompanyParser extends ParserUtils implements IParser<Company>
         builder.add(items);
     }
     
-    private Address GetAddress(Company model)
+    private Address getAddress(Company model)
     {
         var address = model.getAddress();
         if (address == null) { return new Address(); }

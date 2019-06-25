@@ -6,10 +6,6 @@ public class Address
 	private String streetNumber;
 	private String postalCode;
 	private String city;
-
-	public Address() {
-		//This constructor should be empty
-	}
 	
 	public String getStreet()
 	{
