@@ -1,16 +1,15 @@
 package parser;
 
 import model.Company;
-import org.junit.Before;
-import org.junit.Test;
-
-import static org.junit.Assert.assertEquals;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeEach;
 
 public class FileParserTests
 {
     private FileParser<Company> fileParser;
     
-    @Before
+    @BeforeEach
     public void Before()
     {
         //reflection didn't catch inheritance

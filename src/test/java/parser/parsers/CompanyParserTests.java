@@ -2,18 +2,18 @@ package parser.parsers;
 
 import model.Address;
 import model.Company;
-import org.junit.Before;
-import org.junit.Test;
 import parser.FileBuilder;
 import parser.IParser;
 
-import static org.junit.Assert.assertEquals;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CompanyParserTests
 {
     private IParser parser;
     
-    @Before
+    @BeforeEach
     public void Before()
     {
         parser = new CompanyParser();

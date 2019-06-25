@@ -32,7 +32,6 @@ public class CustomerParser extends ParserUtils implements IParser<Customer>
                         Shorten(64, model.getIban()),
                         Shorten(10, model.getBic()),
                 };
-
         builder.add(items);
     }
 }

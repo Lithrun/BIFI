@@ -1,5 +1,7 @@
 package model;
 
+import java.util.ArrayList;
+
 public class Customer
 {
 	private String companyName;
@@ -11,7 +13,9 @@ public class Customer
 	private String vatNumber;
 	private String iban;
 	private String bic;
-	private InvoiceLine[] invoiceLines;
+	private int customerId;
+	private ArrayList<Invoice> invoices = new ArrayList<Invoice>();
+  private int personId;
 
 	public String getCompanyName()
 	{
@@ -103,13 +107,21 @@ public class Customer
 		this.bic = bic;
 	}
 
-	public InvoiceLine[] getInvoiceLines()
+	public ArrayList<Invoice> getInvoices()
 	{
-		return invoiceLines;
+		return invoices;
 	}
 
-	public void setInvoiceLines(InvoiceLine[] invoiceLines)
+	public void setInvoices(Invoice invoice)
 	{
-		this.invoiceLines = invoiceLines;
+		this.invoices.add(invoice);
 	}
+
+	public int getCustomerId() {return customerId;}
+
+	public void setCustomerId(int customerId) {this.customerId = customerId;}
+  
+  public int getPersonId() {return personId;}
+
+	public void setPersonId(int personId) {this.personId = personId;}
 }
