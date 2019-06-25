@@ -1,4 +1,4 @@
-package services;
+package nl.hu.sie.bep.bifi.group2.services;
 
 import nl.hu.sie.bep.bifi.group2.model.Address;
 import nl.hu.sie.bep.bifi.group2.model.Customer;
