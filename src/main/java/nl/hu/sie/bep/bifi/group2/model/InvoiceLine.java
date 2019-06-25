@@ -1,5 +1,7 @@
 package nl.hu.sie.bep.bifi.group2.model;
 
+import java.sql.Date;
+
 public class InvoiceLine
 {
     private String btwCode;
@@ -8,6 +10,7 @@ public class InvoiceLine
     private int quantity;
     private double totalPrice;
 	private String unit;
+	private Date date;
 
     public String getBtwCode() {
         return btwCode;
@@ -56,5 +59,15 @@ public class InvoiceLine
 
     public void setUnit(String unit) {
         this.unit = unit;
+    }
+
+    public Date getDate()
+    {
+        return date;
+    }
+
+    public void setDate(Date date)
+    {
+        this.date = date;
     }
 }

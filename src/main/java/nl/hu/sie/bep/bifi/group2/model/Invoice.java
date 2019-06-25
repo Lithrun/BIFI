@@ -4,12 +4,15 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class Invoice {
+public class Invoice 
+{
     private int customerId;
     private int invoiceId;
     private Date date;
     private List<InvoiceLine> invoiceLines = new ArrayList<>();
     private String note;
+    private String type;
+    private String invoiceNumber;
     private int personId;
 
     public int getCustomerId() {
@@ -60,4 +63,23 @@ public class Invoice {
         this.personId = personId;
     }
 
+    public String getType()
+    {
+        return type;
+    }
+
+    public void setType(String type)
+    {
+        this.type = type;
+    }
+
+    public String getInvoiceNumber()
+    {
+        return invoiceNumber;
+    }
+
+    public void setInvoiceNumber(String invoiceNumber)
+    {
+        this.invoiceNumber = invoiceNumber;
+    }
 }

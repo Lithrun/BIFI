@@ -28,7 +28,7 @@ public class FileParser<T>
     private Class<?>[] parsers = new Class[]
     {
         CompanyParser.class,
-        InvoiceInformationLineParser.class,
+        InvoiceParser.class,
         InvoiceLineParser.class,
         TextLineParser.class,
         CustomerParser.class,

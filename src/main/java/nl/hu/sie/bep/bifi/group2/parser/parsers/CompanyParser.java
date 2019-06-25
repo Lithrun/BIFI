@@ -38,7 +38,10 @@ public class CompanyParser extends ParserUtils implements IParser<Company>
     private Address getAddress(Company model)
     {
         var address = model.getAddress();
-        if (address == null) { return new Address(); }
+        if (address == null) 
+        {
+            return new Address(); 
+        }
         
         return address;
     }
