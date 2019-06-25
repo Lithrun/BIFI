@@ -1,4 +1,4 @@
-package nl.hu.sie.bep.bifi.group2.persistence;
+package nl.hu.sie.bep.bifi.group2.persistence.mongo;
 
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
@@ -18,6 +18,8 @@ import java.util.List;
 
 public class MongoReader {
     private ArrayList<Invoice> invoices = new ArrayList<>();
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(MongoReader.class);
 
     public List<Invoice> getAllInvoices() {
         MongoCollection<Document> mongoCollection = connectToDatabase();
@@ -42,9 +44,7 @@ public class MongoReader {
             mongoCollection = database.getCollection("bifi");
         }
         catch (MongoException mongoException) {
-            Logger logger = LoggerFactory.getLogger(MongoReader.class);
-            logger.info("connectToDatabase - MongoException");
-            mongoException.printStackTrace();
+            LOGGER.info("connectToDatabase", mongoException);
         }
         finally {
             mongoClient.close();
@@ -73,7 +73,7 @@ public class MongoReader {
         invoiceLine.setProductId(line.getInteger("productId"));
         invoiceLine.setProductName(line.getString("productName"));
         invoiceLine.setQuantity(line.getInteger("quantity"));
-// TODO: fix        invoiceLine.setTotalPrice(line.getInteger("totalPrice"));
+        invoiceLine.setTotalPrice(line.getDouble("totalPrice"));
         invoiceLine.setUnit(line.getString("unit"));
         invoice.setInvoiceLine(invoiceLine);
     }

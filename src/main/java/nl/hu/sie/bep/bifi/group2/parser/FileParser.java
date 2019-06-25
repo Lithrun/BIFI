@@ -19,7 +19,7 @@ public class FileParser<T>
 {
     private T model;
 
-    Logger logger = LoggerFactory.getLogger(FileParser.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(FileParser.class);
 
     //Can be made static or can be done by static constructors or something
     private Map<Class<?>, Class<?>> parserCache = new HashMap<>();
@@ -60,42 +60,36 @@ public class FileParser<T>
         
         var properties = getProperties(modelClass);
         
-        for( var property : properties)
+        for(var property : properties)
         {
             var type = property.getPropertyType();
-            
-            //if array, we want to do the same for every item
+            var value = getValue(model, property.getName());
+            if (value == null) continue;
             if(type.isArray())
             {
-                var value = getValue(model, property.getName());
-                if (value == null)
-                {
-                    continue;
-                }
-                
-                for (var i = 0; i < Array.getLength(value); i++)
-                {
-                    var arrayValue = Array.get(value, i);
-                    if (arrayValue == null)
-                    {
-                        continue;
-                    }
-                    
-                    parse(builder, arrayValue);
-                }
-                
+                handleArray(builder, value);
             }
-            //If its a class we try get a parser also
+
             else if (type.getClassLoader() != null)
             {
-                var value = getValue(model, property.getName());
-                if (value == null)
-                {
-                    continue;
-                }
-                
-                parse(builder, value);
+                handleClassLoader(builder, value);
             }
+        }
+    }
+
+    private void handleClassLoader(FileBuilder builder, Object value) {
+        parse(builder, value);
+    }
+
+    private void handleArray(FileBuilder builder, Object value) {
+        for (var i = 0; i < Array.getLength(value); i++)
+        {
+            var arrayValue = Array.get(value, i);
+            if (arrayValue == null)
+            {
+                continue;
+            }
+            parse(builder, arrayValue);
         }
     }
 
@@ -105,20 +99,9 @@ public class FileParser<T>
         {
             return PropertyUtils.getProperty(model, name);
         }
-        catch (IllegalAccessException e)
+        catch (IllegalAccessException|InvocationTargetException|NoSuchMethodException e)
         {
-            logger.info("getValue - IllegalAccessException");
-            e.printStackTrace();
-        }
-        catch (InvocationTargetException e)
-        {
-            logger.info("getValue - InvocationTargetException");
-            e.printStackTrace();
-        }
-        catch (NoSuchMethodException e)
-        {
-            logger.info("getValue - NoSuchMethodException");
-            e.printStackTrace();
+            LOGGER.info("getValue", e);
         }
         
         return null;
@@ -130,6 +113,7 @@ public class FileParser<T>
         {
             return tryCreateParser(parserCache.get(model));
         }
+
         
         for (var parser : parsers)
         {
@@ -165,13 +149,9 @@ public class FileParser<T>
     {
         try
         {
-            return (IParser) parser.newInstance();
+            return (IParser) parser.getDeclaredConstructor().newInstance();
         }
-        catch (InstantiationException e)
-        {
-            return null;
-        }
-        catch (IllegalAccessException e)
+        catch (InstantiationException|IllegalAccessException|NoSuchMethodException|InvocationTargetException e)
         {
             return null;
         }
@@ -186,7 +166,7 @@ public class FileParser<T>
         }
         catch (IntrospectionException e)
         {
-            logger.info("getProperties - IntrospectionException");
+            LOGGER.info("getProperties - IntrospectionException");
             e.printStackTrace();
             return new PropertyDescriptor[0];
         }
