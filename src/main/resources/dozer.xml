@@ -8,8 +8,8 @@
         <wildcard>true</wildcard>
     </configuration>
     <mapping>
-        <class-a>persistence.mysql.dao.CustomerDao</class-a>
-        <class-b>model.Customer</class-b>
+        <class-a>nl.hu.sie.bep.bifi.group2.persistence.mysql.dao.CustomerDao</class-a>
+        <class-b>nl.hu.sie.bep.bifi.group2.model.Customer</class-b>
         <field>
             <a>person.firstName</a>
             <b>name</b>
@@ -24,8 +24,8 @@
         </field>
     </mapping>
     <mapping>
-        <class-a>persistence.mysql.dao.AddressDao</class-a>
-        <class-b>model.Address</class-b>
+        <class-a>nl.hu.sie.bep.bifi.group2.persistence.mysql.dao.AddressDao</class-a>
+        <class-b>nl.hu.sie.bep.bifi.group2.model.Address</class-b>
         <field>
             <a>zipCode</a>
             <b>postalCode</b>

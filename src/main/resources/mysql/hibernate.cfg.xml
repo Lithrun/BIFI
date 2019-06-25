@@ -26,8 +26,8 @@
         <property name="hibernate.dbcp.minIdle">5</property>
         <property name="hibernate.dbcp.maxWaitMillis">-1</property>
 
-        <mapping class="persistence.mysql.dao.AddressDao" />
-        <mapping class="persistence.mysql.dao.CustomerDao" />
-        <mapping class="persistence.mysql.dao.PersonDao" />
+        <mapping class="nl.hu.sie.bep.bifi.group2.persistence.mysql.dao.AddressDao" />
+        <mapping class="nl.hu.sie.bep.bifi.group2.persistence.mysql.dao.CustomerDao" />
+        <mapping class="nl.hu.sie.bep.bifi.group2.persistence.mysql.dao.PersonDao" />
     </session-factory>
 </hibernate-configuration>

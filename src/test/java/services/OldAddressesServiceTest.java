@@ -1,11 +1,12 @@
 package services;
 
-import model.Address;
-import model.Customer;
+import nl.hu.sie.bep.bifi.group2.model.Address;
+import nl.hu.sie.bep.bifi.group2.model.Customer;
+import nl.hu.sie.bep.bifi.group2.services.OldAddressesService;
 import org.easymock.EasyMockSupport;
 import org.easymock.TestSubject;
 import org.junit.Test;
-import services.generic.IOldAddressesService;
+import nl.hu.sie.bep.bifi.group2.services.generic.IOldAddressesService;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
