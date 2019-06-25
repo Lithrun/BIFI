@@ -5,6 +5,10 @@ import org.hibernate.cfg.Configuration;
 
 public class MySqlUtil {
     private static SessionFactory sessionFactory;
+    
+    private MySqlUtil() {
+    	//This constructor should be empty
+    }
 
     public static SessionFactory getSessionFactory() {
         if (sessionFactory == null) {
