@@ -105,20 +105,9 @@ public class FileParser<T>
         {
             return PropertyUtils.getProperty(model, name);
         }
-        catch (IllegalAccessException e)
+        catch (IllegalAccessException|InvocationTargetException|NoSuchMethodException e)
         {
-            logger.info("getValue - IllegalAccessException");
-            e.printStackTrace();
-        }
-        catch (InvocationTargetException e)
-        {
-            logger.info("getValue - InvocationTargetException");
-            e.printStackTrace();
-        }
-        catch (NoSuchMethodException e)
-        {
-            logger.info("getValue - NoSuchMethodException");
-            e.printStackTrace();
+            logger.info("getValue", e);
         }
         
         return null;
