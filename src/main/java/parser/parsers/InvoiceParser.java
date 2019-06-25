@@ -8,12 +8,12 @@ import parser.FileBuilder;
 public class InvoiceParser extends ParserUtils implements IParser<Invoice> {
 
     @Override
-    public void Parse(FileBuilder builder, Invoice model) {
+    public void parse(FileBuilder builder, Invoice model) {
 
         var items = new String[]
         {
 
         };
-        builder.Add(items);
+        builder.add(items);
     }
 }

@@ -20,16 +20,16 @@ public class CompanyParser extends ParserUtils implements IParser<Company>
         var items = new String[]
         {
             "B",
-            Shorten(60, model.getName()),                
+            shortenStringValue(60, model.getName()),
                 
-            Shorten(60, address.getStreet()),
-            Shorten(10, address.getStreetNumber()),
-            Shorten(6, address.getPostalCode()),
-            Shorten(20, address.getCity()),
+            shortenStringValue(60, address.getStreet()),
+            shortenStringValue(10, address.getStreetNumber()),
+            shortenStringValue(6, address.getPostalCode()),
+            shortenStringValue(20, address.getCity()),
                 
-            Shorten(13, model.getVatNumber()),
-            Shorten(64, model.getIban()),
-            Shorten(10, model.getBic()),
+            shortenStringValue(13, model.getVatNumber()),
+            shortenStringValue(64, model.getIban()),
+            shortenStringValue(10, model.getBic()),
         };
         
         builder.add(items);

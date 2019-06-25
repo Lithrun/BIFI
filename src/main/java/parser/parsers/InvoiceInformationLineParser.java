@@ -13,8 +13,8 @@ public class InvoiceInformationLineParser extends ParserUtils implements IParser
         var items = new String[]
         {
             "F", // to pay respect
-            Format(model.getDate()),
-            Shorten(10, model.getInvoiceNumber())
+            formatDate(model.getDate()),
+            shortenStringValue(10, model.getInvoiceNumber())
         };
 
         builder.add(items);
