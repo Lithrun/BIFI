@@ -20,8 +20,7 @@ public class MySqlUtil {
                 sessionFactory = config.buildSessionFactory();
             } catch (Exception exception) {
                 Logger logger = LoggerFactory.getLogger(MySqlUtil.class);
-                logger.info("getSessionFactory - Exception");
-                exception.printStackTrace();
+                logger.info("getSessionFactory - Exception", exception);
             }
         }
         return sessionFactory;
