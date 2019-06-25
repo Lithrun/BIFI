@@ -38,7 +38,7 @@ public class FileParser<T>
     {
         var builder = new FileBuilder();
         parse(builder, model);
-        return builder.Build();
+        return builder.build();
     }
 
     private <MT> void parse(FileBuilder builder, MT model)
@@ -49,9 +49,9 @@ public class FileParser<T>
         {
             return;
         }
-        
-        parser.Parse(builder, model);
-        builder.NextLine();
+
+        parser.parse(builder, model);
+        builder.nextLine();
         
         var properties = getProperties(modelClass);
         

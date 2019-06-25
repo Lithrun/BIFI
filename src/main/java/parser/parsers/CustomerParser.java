@@ -2,8 +2,8 @@ package parser.parsers;
 
 import model.Address;
 import model.Customer;
-import parser.IParser;
 import parser.FileBuilder;
+import parser.IParser;
 import parser.ParserUtils;
 
 public class CustomerParser extends ParserUtils implements IParser<Customer>
@@ -32,7 +32,6 @@ public class CustomerParser extends ParserUtils implements IParser<Customer>
                         Shorten(64, model.getIban()),
                         Shorten(10, model.getBic()),
                 };
-
         builder.add(items);
     }
 }

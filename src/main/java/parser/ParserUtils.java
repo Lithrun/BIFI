@@ -19,7 +19,6 @@ public class ParserUtils
         
         return value.substring(0, maxLength);
     }
-
     public String formatDate(Date date)
     {
         if (date == null)
@@ -43,7 +42,6 @@ public class ParserUtils
         
         return integralString + fractionalString;
     }
-
     //It's not duplicated, the adding of the str is different
     @SuppressWarnings("Duplicates")
     private String leftPad(String str, int amount, String value)

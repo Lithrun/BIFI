@@ -1,93 +1,60 @@
 package model;
 
-import java.sql.Date;
-
 public class InvoiceLine
 {
-	private String description;
-	private double quantity;
-	private double priceExclVat;
-	//TODO maken vatType an enum with 0, high/hoog, low/laag
-	private int vatType; // 1 = 0, 2 = laag, 3 = hoog
-	private Date date;
+    private String btwCode;
+    private int productId;
+    private String productName;
+    private int quantity;
+    private int totalPrice;
 	private String unit;
-	private InvoiceLineInformation[] invoiceLineInformations;
-	private TextLine textLine;
 
-	public String getDescription()
-	{
-		return description;
-	}
+    public String getBtwCode() {
+        return btwCode;
+    }
 
-	public void setDescription(String description)
-	{
-		this.description = description;
-	}
+    public void setBtwCode(String btwCode) {
+        this.btwCode = btwCode;
+    }
 
-	public double getQuantity()
+    public int getProductId() {
+        return productId;
+    }
+
+    public void setProductId(int productId) {
+        this.productId = productId;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    public int getQuantity()
 	{
 		return quantity;
 	}
 
-	public void setQuantity(double quantity)
-	{
-		this.quantity = quantity;
-	}
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
 
-	public double getPriceExclVat()
-	{
-		return priceExclVat;
-	}
+    public int getTotalPrice() {
+        return totalPrice;
+    }
 
-	public void setPriceExclVat(double priceExclVat)
-	{
-		this.priceExclVat = priceExclVat;
-	}
+    public void setTotalPrice(int totalPrice) {
+        this.totalPrice = totalPrice;
+    }
 
-	public int getVatType()
-	{
-		return vatType;
-	}
+    public String getUnit() {
+        return unit;
+    }
 
-	public void setVatType(int vatType)
-	{
-		this.vatType = vatType;
-	}
-
-	public Date getDate()
-	{
-		return date;
-	}
-
-	public void setDate(Date date)
-	{
-		this.date = date;
-	}
-
-	public String getUnit()
-	{
-		return unit;
-	}
-
-	public void setUnit(String unit)
-	{
-		this.unit = unit;
-	}
-
-	public InvoiceLineInformation[] getInvoiceLineInformations()
-	{
-		return invoiceLineInformations;
-	}
-
-	public void setInvoiceLineInformations(InvoiceLineInformation[] invoiceLineInformations) { this.invoiceLineInformations = invoiceLineInformations; }
-
-	public TextLine getTextLine()
-	{
-		return textLine;
-	}
-
-	public void setTextLine(TextLine textLine)
-	{
-		this.textLine = textLine;
-	}
+    public void setUnit(String unit) {
+        this.unit = unit;
+    }
 }
