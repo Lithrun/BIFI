@@ -7,7 +7,10 @@ public class Address
 	private String postalCode;
 	private String city;
 
-	public Address() {}
+	public Address() {
+		//This constructor should be empty
+	}
+	
 	public String getStreet()
 	{
 		return street;

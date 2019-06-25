@@ -6,6 +6,10 @@ import com.github.dozermapper.core.Mapper;
 class MappingUtil {
 
     private static Mapper mapper;
+    
+    private MappingUtil() {
+    	
+    }
     static Mapper getMapper() {
 
         if (mapper == null) {
