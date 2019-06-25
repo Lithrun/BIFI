@@ -46,9 +46,6 @@ public class MongoReader {
             logger.info("connectToDatabase - MongoException");
             mongoException.printStackTrace();
         }
-        finally {
-            mongoClient.close();
-        }
 
         return mongoCollection;
     }
