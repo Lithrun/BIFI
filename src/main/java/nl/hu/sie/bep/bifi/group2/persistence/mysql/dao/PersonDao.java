@@ -32,10 +32,6 @@ public class PersonDao {
     @OneToOne(cascade = CascadeType.ALL)
     private CustomerDao customer;
 
-    public PersonDao() {
-    	//This constructor should be empty
-    }
-
     public int getId() {
         return id;
     }
