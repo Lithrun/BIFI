@@ -2,17 +2,15 @@ package nl.hu.sie.bep.bifi.group2.model;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Invoice {
     private int customerId;
     private int invoiceId;
     private Date date;
-    private ArrayList<InvoiceLine> invoiceLines = new ArrayList<InvoiceLine>();
+    private List<InvoiceLine> invoiceLines = new ArrayList<>();
     private String note;
     private int personId;
-
-    public Invoice() {
-    }
 
     public int getCustomerId() {
         return customerId;
@@ -38,7 +36,7 @@ public class Invoice {
         this.date = date;
     }
 
-    public ArrayList<InvoiceLine> getInvoiceLines() {
+    public List<InvoiceLine> getInvoiceLines() {
         return invoiceLines;
     }
 
@@ -55,7 +53,7 @@ public class Invoice {
     }
 
     public int getPersonId() {
-        return invoiceId;
+        return personId;
     }
 
     public void setPersonId(int personId) {

@@ -34,7 +34,7 @@ public class FileBuilder
     
     public void nextLine()
     {
-        if (currentLine.size() > 0)
+        if (!currentLine.isEmpty())
         {
             lines.add(currentLine);
         }
