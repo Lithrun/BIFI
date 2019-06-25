@@ -11,9 +11,6 @@ public class Invoice {
     private String note;
     private int personId;
 
-    public Invoice() {
-    }
-
     public int getCustomerId() {
         return customerId;
     }
@@ -55,7 +52,7 @@ public class Invoice {
     }
 
     public int getPersonId() {
-        return invoiceId;
+        return personId;
     }
 
     public void setPersonId(int personId) {
