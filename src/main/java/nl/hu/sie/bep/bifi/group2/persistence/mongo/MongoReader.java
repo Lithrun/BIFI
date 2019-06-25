@@ -3,8 +3,6 @@ package nl.hu.sie.bep.bifi.group2.persistence.mongo;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
 import com.mongodb.MongoException;
-import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
 
 import nl.hu.sie.bep.bifi.group2.model.Invoice;
@@ -20,7 +18,7 @@ public class MongoReader
     private ArrayList<Invoice> invoices = new ArrayList<>();
 
     private static final Logger LOGGER = LoggerFactory.getLogger(MongoReader.class);
-    private final String connectionString = "mongodb+srv://Nynke:Tester123@clusterfriendspammer-fvgbf.mongodb.net/test?retryWrites=true&w=majority";
+    private static final String connectionString = "mongodb+srv://Nynke:Tester123@clusterfriendspammer-fvgbf.mongodb.net/test?retryWrites=true&w=majority";
 
     public List<Invoice> getAllInvoices() 
     {
@@ -50,7 +48,7 @@ public class MongoReader
             mongoClient.close();
         }
 
-        return null;        
+        return new ArrayList<>();        
 
     }
 
