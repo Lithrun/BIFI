@@ -10,6 +10,8 @@ import org.bson.Document;
 
 import nl.hu.sie.bep.bifi.group2.model.Invoice;
 import nl.hu.sie.bep.bifi.group2.model.InvoiceLine;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,6 +43,8 @@ public class MongoReader {
             mongoCollection = database.getCollection("bifi");
         }
         catch (MongoException mongoException) {
+            Logger logger = LoggerFactory.getLogger(MongoReader.class);
+            logger.info("connectToDatabase - MongoException");
             mongoException.printStackTrace();
         }
         finally {
