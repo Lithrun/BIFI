@@ -100,15 +100,7 @@ public class FileParser<T>
         {
             return PropertyUtils.getProperty(model, name);
         }
-        catch (IllegalAccessException e)
-        {
-            e.printStackTrace();
-        }
-        catch (InvocationTargetException e)
-        {
-            e.printStackTrace();
-        }
-        catch (NoSuchMethodException e)
+        catch (IllegalAccessException|InvocationTargetException|NoSuchMethodException e)
         {
             e.printStackTrace();
         }
@@ -157,17 +149,12 @@ public class FileParser<T>
     {
         try
         {
-            return (IParser) parser.newInstance();
+            return (IParser) parser.getDeclaredConstructor().newInstance();
         }
-        catch (InstantiationException e)
+        catch (InstantiationException|NoSuchMethodException|IllegalAccessException|InvocationTargetException e)
         {
             return null;
         }
-        catch (IllegalAccessException e)
-        {
-            return null;
-        }
-        
     }
 
     private PropertyDescriptor[] getProperties(Class<?> type)
