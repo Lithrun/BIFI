@@ -1,10 +1,10 @@
-package services;
+package nl.hu.sie.bep.bifi.group2.services;
 
-import model.Address;
-import model.Customer;
+import nl.hu.sie.bep.bifi.group2.model.Address;
+import nl.hu.sie.bep.bifi.group2.model.Customer;
 import nl.hu.sie.bep.bifi.group2.persistence.jar.OldAddressJarDataFactory;
 import nl.hu.sie.bep.bifi.group2.persistence.jar.generic.JarDataFactory;
-import services.generic.IOldAddressesService;
+import nl.hu.sie.bep.bifi.group2.services.generic.IOldAddressesService;
 
 public class OldAddressesService implements IOldAddressesService {
     private JarDataFactory<Address> jarDataFactory = new OldAddressJarDataFactory();

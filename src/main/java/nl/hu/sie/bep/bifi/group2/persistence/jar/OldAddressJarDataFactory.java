@@ -1,7 +1,7 @@
 package nl.hu.sie.bep.bifi.group2.persistence.jar;
 
 import ADDRLOOKUPER.*;
-import model.Address;
+import nl.hu.sie.bep.bifi.group2.model.Address;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import nl.hu.sie.bep.bifi.group2.persistence.jar.generic.JarDataFactory;

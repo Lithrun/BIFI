@@ -1,6 +1,6 @@
 package nl.hu.sie.bep.bifi.group2.persistence.jar;
 
-import model.Address;
+import nl.hu.sie.bep.bifi.group2.model.Address;
 import nl.hu.sie.bep.bifi.group2.persistence.jar.generic.MappingFactory;
 
 import java.util.Map;
