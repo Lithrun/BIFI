@@ -19,7 +19,7 @@ public class FileParser<T>
 {
     private T model;
 
-    Logger logger = LoggerFactory.getLogger(FileParser.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(FileParser.class);
 
     //Can be made static or can be done by static constructors or something
     private Map<Class<?>, Class<?>> parserCache = new HashMap<>();
@@ -107,7 +107,7 @@ public class FileParser<T>
         }
         catch (IllegalAccessException|InvocationTargetException|NoSuchMethodException e)
         {
-            logger.info("getValue", e);
+            LOGGER.info("getValue", e);
         }
         
         return null;
@@ -176,7 +176,7 @@ public class FileParser<T>
         }
         catch (IntrospectionException e)
         {
-            logger.info("getProperties - IntrospectionException");
+            LOGGER.info("getProperties - IntrospectionException");
             e.printStackTrace();
             return new PropertyDescriptor[0];
         }
