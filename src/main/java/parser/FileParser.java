@@ -31,7 +31,7 @@ public class FileParser<T>
 
     public FileParser(T model)
     {
-        model = model;
+        this.model = model;
     }
 
     public String parse()

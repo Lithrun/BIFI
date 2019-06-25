@@ -35,7 +35,7 @@ public class Invoice {
 
     public void setNote(String note) {this.note = note;}
 
-    public int getPersonId() {return invoiceId;}
+    public int getPersonId() {return personId;}
 
     public void setPersonId(int personId) {this.personId = personId;}
 
