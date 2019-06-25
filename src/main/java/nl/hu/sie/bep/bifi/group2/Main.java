@@ -1,15 +1,13 @@
 package nl.hu.sie.bep.bifi.group2;
 
-import nl.hu.sie.bep.bifi.group2.model.Company;
 import nl.hu.sie.bep.bifi.group2.parser.FileParser;
-import nl.hu.sie.bep.bifi.group2.persistence.mongo.MongoReader;
 import nl.hu.sie.bep.bifi.group2.services.company.CompanyService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class Main
 {
-    private final Logger LOGGER = LoggerFactory.getLogger(Main.class);
+    private final Logger logger = LoggerFactory.getLogger(Main.class);
     
     private int month;
 
@@ -44,10 +42,8 @@ public class Main
             var parser = new FileParser(company);
             var iefFile = parser.parse();
 
-            LOGGER.info("== file ==");
-            LOGGER.info(iefFile);
-
-            System.out.println(iefFile);
+            logger.info("== file ==");
+            logger.info(iefFile);
         }
     }
     
