@@ -1,6 +1,7 @@
 package nl.hu.sie.bep.bifi.group2.model;
 
 import nl.hu.sie.bep.bifi.group2.persistence.mysql.dao.CustomerDao;
+import nl.hu.sie.bep.bifi.group2.services.invoices.InvoiceService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +18,7 @@ public class Customer
 	private String iban;
 	private String bic;
     private int customerId;
-    private List<Invoice> invoices = new ArrayList<>();
+    private Invoice[] invoices;
     private int personId;
     
     public static Customer fromCustomerDao(CustomerDao dao)
@@ -135,12 +136,12 @@ public class Customer
 		this.bic = bic;
 	}
 
-    public List<Invoice> getInvoices() {
+    public Invoice[] getInvoices() {
         return invoices;
     }
 
-    public void setInvoices(Invoice invoice) {
-        this.invoices.add(invoice);
+    public void setInvoices(Invoice[] invoices) {
+        this.invoices = invoices;
     }
 
     public int getCustomerId() {
@@ -158,14 +159,4 @@ public class Customer
     public void setPersonId(int personId) {
         this.personId = personId;
     }
-
-	public void addInvoices(Invoice invoice)
-	{
-	    if (invoices == null)
-		{
-			invoices = new ArrayList<>();
-		}
-	    
-	    invoices.add(invoice);
-	}
 }
