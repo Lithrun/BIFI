@@ -1,6 +1,7 @@
 package nl.hu.sie.bep.bifi.group2.model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Customer
 {
@@ -14,7 +15,7 @@ public class Customer
 	private String iban;
 	private String bic;
     private int customerId;
-    private ArrayList<Invoice> invoices = new ArrayList<Invoice>();
+    private List<Invoice> invoices = new ArrayList<>();
     private int personId;
 
 	public String getCompanyName()
@@ -107,7 +108,7 @@ public class Customer
 		this.bic = bic;
 	}
 
-    public ArrayList<Invoice> getInvoices() {
+    public List<Invoice> getInvoices() {
         return invoices;
     }
 

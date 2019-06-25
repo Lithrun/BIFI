@@ -46,7 +46,7 @@ public class FileParser<T>
         return builder.build();
     }
 
-    private <MT> void parse(FileBuilder builder, MT model)
+    private <M> void parse(FileBuilder builder, M model)
     {
         var modelClass = model.getClass();
         var parser = getParser(modelClass);
