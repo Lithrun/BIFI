@@ -166,8 +166,7 @@ public class FileParser<T>
         }
         catch (IntrospectionException e)
         {
-            LOGGER.info("getProperties - IntrospectionException");
-            e.printStackTrace();
+            LOGGER.info("getProperties - IntrospectionException", e);
             return new PropertyDescriptor[0];
         }
     }
