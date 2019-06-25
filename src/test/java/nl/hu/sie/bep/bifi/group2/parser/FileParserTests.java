@@ -27,8 +27,7 @@ public class FileParserTests
         
         var expected = "B,Company name,Street,21e,1234aa,Utrecht,02349385,INGB03NL0001234435,ING\n" +
                 "K,A company,Dhr,Piet,van,Test persoon,Street,21,4321bb,Utrecht,jdfhkjgf,INGB03NL9874356iuh,lkfdg\n" +
-                "R,,00000,00000,0,,\n" +
-                "K,,,,,,,,,,,,";
+                "K,,,,,,,,,,,,,";
                 
         assertEquals(expected, result);
     }
