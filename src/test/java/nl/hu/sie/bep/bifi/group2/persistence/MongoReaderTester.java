@@ -15,6 +15,6 @@ public class MongoReaderTester {
 
     @Test
     public void testInvoiceLoader() {
-        assertEquals(mongoReader.getAllInvoices().size(), 5);
+        assertEquals(5, mongoReader.getAllInvoices().size());
     }
 }
