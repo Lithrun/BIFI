@@ -1,5 +1,6 @@
 package nl.hu.sie.bep.bifi.group2.persistence;
 
+import nl.hu.sie.bep.bifi.group2.persistence.mongo.MongoReader;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
