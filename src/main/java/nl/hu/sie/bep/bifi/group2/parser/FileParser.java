@@ -12,9 +12,14 @@ import java.lang.reflect.ParameterizedType;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
+
 public class FileParser<T>
 {
     private T model;
+
+    Logger logger = LoggerFactory.getLogger(FileParser.class);
 
     //Can be made static or can be done by static constructors or something
     private Map<Class<?>, Class<?>> parserCache = new HashMap<>();
@@ -102,14 +107,17 @@ public class FileParser<T>
         }
         catch (IllegalAccessException e)
         {
+            logger.info("getValue - IllegalAccessException");
             e.printStackTrace();
         }
         catch (InvocationTargetException e)
         {
+            logger.info("getValue - InvocationTargetException");
             e.printStackTrace();
         }
         catch (NoSuchMethodException e)
         {
+            logger.info("getValue - NoSuchMethodException");
             e.printStackTrace();
         }
         
@@ -178,6 +186,7 @@ public class FileParser<T>
         }
         catch (IntrospectionException e)
         {
+            logger.info("getProperties - IntrospectionException");
             e.printStackTrace();
             return new PropertyDescriptor[0];
         }
