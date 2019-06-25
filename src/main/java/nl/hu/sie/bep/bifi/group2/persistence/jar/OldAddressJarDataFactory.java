@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class OldAddressJarDataFactory implements JarDataFactory<Address> {
-    private static final Logger LOGGER = LoggerFactory.getLogger(JarDataFactory.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(OldAddressJarDataFactory.class);
 
     private MappingFactory<Address> mappingFactory;
 
