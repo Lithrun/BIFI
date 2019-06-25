@@ -1,7 +1,5 @@
 package nl.hu.sie.bep.bifi.group2.model;
 
-import nl.hu.sie.bep.bifi.group2.persistence.mysql.dao.CustomerDao;
-
 import java.util.List;
 
 public class Company

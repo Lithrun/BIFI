@@ -54,30 +54,6 @@ public class MongoReader
 
     }
 
-    public MongoCollection<Document> connectToDatabase() 
-    {
-        MongoClientURI uri = new MongoClientURI(connectionString);
-        MongoClient mongoClient = new MongoClient(uri);
-        MongoCollection<Document> mongoCollection = null;
-        MongoDatabase database;
-
-        try (mongoClient)
-        {
-            database = mongoClient.getDatabase("BiFiBEP02");
-            mongoCollection = database.getCollection("bifi");
-        }
-        catch (MongoException mongoException) 
-        {
-            LOGGER.info("connectToDatabase", mongoException);
-        }
-        finally 
-        {
-            mongoClient.close();
-        }
-
-        return mongoCollection;
-    }
-
     public void fillInvoice(Document document) {
         Invoice invoice = new Invoice();
         invoice.setCustomerId(document.getInteger("customerId"));

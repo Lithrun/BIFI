@@ -77,11 +77,13 @@ public class FileParser<T>
         }
     }
 
-    private void handleClassLoader(FileBuilder builder, Object value) {
+    private void handleClassLoader(FileBuilder builder, Object value) 
+    {
         parse(builder, value);
     }
 
-    private void handleArray(FileBuilder builder, Object value) {
+    private void handleArray(FileBuilder builder, Object value) 
+    {
         for (var i = 0; i < Array.getLength(value); i++)
         {
             var arrayValue = Array.get(value, i);
@@ -113,7 +115,6 @@ public class FileParser<T>
         {
             return tryCreateParser(parserCache.get(model));
         }
-
         
         for (var parser : parsers)
         {
