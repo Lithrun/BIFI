@@ -13,9 +13,9 @@ public class Customer
 	private String vatNumber;
 	private String iban;
 	private String bic;
-	private int customerId;
-	private ArrayList<Invoice> invoices = new ArrayList<Invoice>();
-  private int personId;
+    private int customerId;
+    private ArrayList<Invoice> invoices = new ArrayList<Invoice>();
+    private int personId;
 
 	public String getCompanyName()
 	{
@@ -107,21 +107,27 @@ public class Customer
 		this.bic = bic;
 	}
 
-	public ArrayList<Invoice> getInvoices()
-	{
-		return invoices;
-	}
+    public ArrayList<Invoice> getInvoices() {
+        return invoices;
+    }
 
-	public void setInvoices(Invoice invoice)
-	{
-		this.invoices.add(invoice);
-	}
+    public void setInvoices(Invoice invoice) {
+        this.invoices.add(invoice);
+    }
 
-	public int getCustomerId() {return customerId;}
+    public int getCustomerId() {
+        return customerId;
+    }
 
-	public void setCustomerId(int customerId) {this.customerId = customerId;}
-  
-  public int getPersonId() {return personId;}
+    public void setCustomerId(int customerId) {
+        this.customerId = customerId;
+    }
 
-	public void setPersonId(int personId) {this.personId = personId;}
+    public int getPersonId() {
+        return personId;
+    }
+
+    public void setPersonId(int personId) {
+        this.personId = personId;
+    }
 }

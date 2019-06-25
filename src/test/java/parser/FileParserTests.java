@@ -1,14 +1,15 @@
 package parser;
 
 import model.Company;
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class FileParserTests
 {
     private FileParser<Company> fileParser;
-    
+
     @BeforeEach
     public void Before()
     {

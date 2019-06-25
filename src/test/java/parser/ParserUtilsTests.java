@@ -2,13 +2,15 @@ package parser;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+
 import java.util.Date;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ParserUtilsTests
 {
     private ParserUtils utils;
-    
+
     @BeforeEach
     public void Before()
     {

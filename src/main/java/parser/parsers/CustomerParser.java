@@ -2,8 +2,8 @@ package parser.parsers;
 
 import model.Address;
 import model.Customer;
-import parser.IParser;
 import parser.FileBuilder;
+import parser.IParser;
 import parser.ParserUtils;
 
 public class CustomerParser extends ParserUtils implements IParser<Customer>

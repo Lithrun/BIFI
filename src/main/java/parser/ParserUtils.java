@@ -28,7 +28,7 @@ public class ParserUtils
         var format = new SimpleDateFormat("ddMMyy");
         return format.format(date);
     }
-  
+
     public String formatValue(int precision, int scale, double value)
     {
         var valueString = Double.toString(value);
@@ -60,7 +60,7 @@ public class ParserUtils
 
         return value;
     }
-  
+
     //It's not duplicated, the adding of the str is different
     @SuppressWarnings("Duplicates")
     private String rightPad(String str, int amount, String value)

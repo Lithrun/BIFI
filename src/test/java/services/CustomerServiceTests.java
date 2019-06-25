@@ -1,19 +1,16 @@
 package services;
 
-import org.easymock.EasyMockRunner;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
-
-import org.junit.jupiter.api.extension.ExtendWith;
 import persistence.mysql.dao.CustomerDao;
 
 import java.util.ArrayList;
 
 import static org.easymock.EasyMock.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CustomerServiceTests {
 

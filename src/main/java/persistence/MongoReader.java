@@ -1,24 +1,26 @@
 package persistence;
 
-import com.mongodb.*;
+import com.mongodb.MongoClient;
+import com.mongodb.MongoClientURI;
 import com.mongodb.client.FindIterable;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
 import model.Invoice;
 import model.InvoiceLine;
 import org.bson.Document;
-import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoDatabase;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class MongoReader {
     private ArrayList<Invoice> invoices = new ArrayList<Invoice>();
 
-    public ArrayList<Invoice> getAllInvoices () {
+    public ArrayList<Invoice> getAllInvoices() {
         MongoCollection<Document> mongoCollection = connectToDatabase();
 
         FindIterable<Document> documents = mongoCollection.find();
 
-        for (Document document : documents){
+        for (Document document : documents) {
             fillInvoice(document);
         }
 
