@@ -5,20 +5,24 @@ import nl.hu.sie.bep.bifi.group2.model.Company;
 import nl.hu.sie.bep.bifi.group2.model.Customer;
 import nl.hu.sie.bep.bifi.group2.model.InvoiceLine;
 import nl.hu.sie.bep.bifi.group2.parser.FileParser;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class Main
 {
+    private static final Logger LOGGER = LoggerFactory.getLogger(Main.class);
+
     public static void main (String[] args)
     {
         var main = new Main();
-        var model = main.GetCompany();
+        var model = main.getCompany();
 
         //parse
         var parser = new FileParser(model);
         var iefFile = parser.parse();
 
-        System.out.println("== file ==");
-        System.out.println(iefFile);
+        LOGGER.info("== file ==");
+        LOGGER.info(iefFile);
     }
 
     private Main()
@@ -26,7 +30,7 @@ public class Main
         //ignore
     }
 
-    public Company GetCompany()
+    public Company getCompany()
     {
         var companyAddress = new Address();
         companyAddress.setCity("Utrecht");
@@ -41,13 +45,13 @@ public class Main
         company.setIban("INGB03NL0001234435");
         company.setBic("ING");
 
-        var customers = GetCustomers();
+        var customers = getCustomers();
         company.setCustomers(customers);
 
         return company;
     }
 
-    private Customer[] GetCustomers()
+    private Customer[] getCustomers()
     {
         var customer1Address = new Address();
         customer1Address.setCity("Utrecht");
@@ -66,8 +70,6 @@ public class Main
         customer1.setIban("INGB03NL9874356iuh");
         customer1.setBic("lkfdg");
 
-        var invoiceLines = GetInvoiceLineCustomer1();
-        // customer1.setInvoiceLines(invoiceLines);
         var customer2 = new Customer();
 
         return new Customer[]
@@ -76,16 +78,5 @@ public class Main
                         customer2
                 };
     }
-
-    private InvoiceLine[] GetInvoiceLineCustomer1()
-    {
-        var invoiceLine = new InvoiceLine();
-
-        return new InvoiceLine[]
-                {
-                        invoiceLine
-                };
-    }
-
 
 }
