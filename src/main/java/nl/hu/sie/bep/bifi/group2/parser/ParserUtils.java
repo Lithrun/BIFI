@@ -5,7 +5,7 @@ import java.util.Date;
 
 public class ParserUtils
 {
-    public String shortenStringValue(int maxLength, String value)
+    protected String shortenStringValue(int maxLength, String value)
     {
         if (value == null)
         {
@@ -19,7 +19,7 @@ public class ParserUtils
         
         return value.substring(0, maxLength);
     }
-    public String formatDate(Date date)
+    protected String formatDate(Date date)
     {
         if (date == null)
         {
@@ -29,7 +29,7 @@ public class ParserUtils
         return format.format(date);
     }
 
-    public String formatValue(int precision, int scale, double value)
+    protected String formatValue(int precision, int scale, double value)
     {
         var valueString = Double.toString(value);
         var parts = valueString.split("\\.");
@@ -42,41 +42,32 @@ public class ParserUtils
         
         return integralString + fractionalString;
     }
-    //It's not duplicated, the adding of the str is different
-    @SuppressWarnings("Duplicates")
+
     private String leftPad(String str, int amount, String value)
     {
-        if (value.length() >= amount)
-        {
-            return value;
-        }
-
-        var pads = amount - value.length();
-
-        for( var i = 0; i < pads; i++)
-        {
-            value = value + str;
-        }
-
-        return value;
+        return getPad(str, amount, value, false);
     }
 
-    //It's not duplicated, the adding of the str is different
-    @SuppressWarnings("Duplicates")
     private String rightPad(String str, int amount, String value)
     {
+        return getPad(str, amount, value, true);
+    }
+
+    private String getPad(String str, int amount, String value, boolean isRight) {
+
         if (value.length() >= amount)
         {
             return value;
         }
-        
+
         var pads = amount - value.length();
-        
         for( var i = 0; i < pads; i++)
         {
-            value = str + value;
+            value = isRight
+                ? str + value
+                : value + str;
         }
-        
         return value;
     }
+
 }
