@@ -18,7 +18,7 @@ public class Customer
 	private String iban;
 	private String bic;
     private int customerId;
-    private Invoice[] invoices;
+    private List<Invoice> invoices;
     private int personId;
     
     public static Customer fromCustomerDao(CustomerDao dao)
@@ -136,11 +136,11 @@ public class Customer
 		this.bic = bic;
 	}
 
-    public Invoice[] getInvoices() {
+    public List<Invoice> getInvoices() {
         return invoices;
     }
 
-    public void setInvoices(Invoice[] invoices) {
+    public void setInvoices(List<Invoice> invoices) {
         this.invoices = invoices;
     }
 

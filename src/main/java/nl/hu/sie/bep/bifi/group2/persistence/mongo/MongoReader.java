@@ -3,7 +3,6 @@ package nl.hu.sie.bep.bifi.group2.persistence.mongo;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
 import com.mongodb.MongoException;
-import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
@@ -16,37 +15,63 @@ import org.slf4j.LoggerFactory;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MongoReader {
+public class MongoReader 
+{
     private ArrayList<Invoice> invoices = new ArrayList<>();
 
     private static final Logger LOGGER = LoggerFactory.getLogger(MongoReader.class);
+    private final String connectionString = "mongodb+srv://Nynke:Tester123@clusterfriendspammer-fvgbf.mongodb.net/test?retryWrites=true&w=majority";
 
-    public List<Invoice> getAllInvoices() {
-        MongoCollection<Document> mongoCollection = connectToDatabase();
+    public List<Invoice> getAllInvoices() 
+    {
+        var uri = new MongoClientURI(connectionString);
+        var mongoClient = new MongoClient(uri);
 
-        FindIterable<Document> documents = mongoCollection.find();
+        try 
+        {
+            var database = mongoClient.getDatabase("BiFiBEP02");
+            var mongoCollection = database.getCollection("bifi");
+            var documents = mongoCollection.find();
+            return new ArrayList<>();
 
-        for (Document document : documents) {
-            fillInvoice(document);
+            //for (Document document : documents) 
+            //{
+            //    fillInvoice(document);
+            //}
+
+            //return invoices;
+        }
+        catch (MongoException mongoException) 
+        {
+            LOGGER.info("connectToDatabase", mongoException);
+        }
+        finally 
+        {
+            mongoClient.close();
         }
 
-        return invoices;
+        return null;        
+
     }
 
-    public MongoCollection<Document> connectToDatabase() {
-        MongoClientURI uri = new MongoClientURI("mongodb+srv://Nynke:Tester123@clusterfriendspammer-fvgbf.mongodb.net/test?retryWrites=true&w=majority");
+    public MongoCollection<Document> connectToDatabase() 
+    {
+        MongoClientURI uri = new MongoClientURI(connectionString);
         MongoClient mongoClient = new MongoClient(uri);
         MongoCollection<Document> mongoCollection = null;
         MongoDatabase database;
 
-        try (mongoClient){
+        try (mongoClient)
+        {
             database = mongoClient.getDatabase("BiFiBEP02");
             mongoCollection = database.getCollection("bifi");
         }
-        catch (MongoException mongoException) {
+        catch (MongoException mongoException) 
+        {
             LOGGER.info("connectToDatabase", mongoException);
         }
-        finally {
+        finally 
+        {
             mongoClient.close();
         }
 

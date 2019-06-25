@@ -1,15 +1,14 @@
 package nl.hu.sie.bep.bifi.group2.services.company;
 
 import nl.hu.sie.bep.bifi.group2.model.Company;
-import nl.hu.sie.bep.bifi.group2.model.Customer;
 import nl.hu.sie.bep.bifi.group2.persistence.mysql.MySqlUtil;
-import nl.hu.sie.bep.bifi.group2.persistence.mysql.dao.CustomerDao;
 import nl.hu.sie.bep.bifi.group2.services.customer.CustomerService;
 import nl.hu.sie.bep.bifi.group2.services.invoices.InvoiceService;
-import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class CompanyService
 {
@@ -25,41 +24,30 @@ public class CompanyService
         _invoiceService = new InvoiceService(); //todo DI :)
     }
     
-    public Company[] getCompanies(int month)
+    public List<Company> getCompanies(int month)
     {
-        var session = _sessionFactory.openSession();
-        try
+        var companies = _customerService.getAllCustomers()
+                .stream()
+                .distinct()
+                .collect(Collectors.toList());
+        
+        var items = new ArrayList<Company>();
+        
+        for (var company : companies)
         {
-            //idk man
-            var query = "SELECT Bedrijfsnaam FROM Bifi.klant GROUP BY Bedrijfsnaam";
-            var result = session.createNativeQuery(query, CustomerDao.class).getResultList();
-            var items = new ArrayList<Company>();
-
-            for (var company : result)
+            var newCompany = Company.fromCustomer(company);
+            var customers = _customerService.getCustomersByCompany(newCompany.getName());
+            
+            for (var customer : customers)
             {
-                var newCompany = Company.fromCustomer(company);
-                var customers = _customerService.getCustomersByCompany(newCompany.getName());
-                
-                for (var customer : customers)
-                {
-                   var invoices = _invoiceService.getInvoiceForCustomerByMonth(customer.getCustomerId(), month);
-                   customer.setInvoices(invoices);
-                }
-                
-                newCompany.setCustomers(customers);
-                items.add(newCompany);
+               var invoices = _invoiceService.getInvoiceForCustomerByMonth(customer.getCustomerId(), month);
+               customer.setInvoices(invoices);
             }
-
-            return (Company[]) items.toArray();
-
+            
+            newCompany.setCustomers(customers);
+            items.add(newCompany);
         }
-        catch (HibernateException ex)
-        {
-            return null;
-        }
-        finally
-        {
-            session.close();
-        }
+        
+        return items;
     }
 }

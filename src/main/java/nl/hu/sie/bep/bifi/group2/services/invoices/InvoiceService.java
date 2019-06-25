@@ -4,6 +4,7 @@ import nl.hu.sie.bep.bifi.group2.model.Invoice;
 import nl.hu.sie.bep.bifi.group2.persistence.mongo.MongoReader;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class InvoiceService
 {
@@ -14,7 +15,7 @@ public class InvoiceService
         mongoDb = new MongoReader();
     }
     
-    public Invoice[] getInvoiceForCustomerByMonth(int customerId, int month)
+    public List<Invoice> getInvoiceForCustomerByMonth(int customerId, int month)
     {
         var invoices = mongoDb.getAllInvoices();
 
@@ -34,6 +35,6 @@ public class InvoiceService
             values.add(invoice);
         }
         
-        return (Invoice[]) values.toArray();
+        return values;
     }
 }

@@ -5,6 +5,8 @@ import nl.hu.sie.bep.bifi.group2.model.Company;
 import nl.hu.sie.bep.bifi.group2.model.Customer;
 import nl.hu.sie.bep.bifi.group2.model.InvoiceLine;
 
+import java.util.Arrays;
+
 public class TestCompany 
 {
     public Company GetCompany()
@@ -23,7 +25,7 @@ public class TestCompany
         company.setBic("ING");
 
         var customers = GetCustomers();
-        company.setCustomers(customers);
+        company.setCustomers(Arrays.asList(customers));
 
         return company;
     }
