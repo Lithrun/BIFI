@@ -49,7 +49,7 @@ public class FileParser<T>
         {
             return;
         }
-        
+
         parser.parse(builder, model);
         builder.nextLine();
         

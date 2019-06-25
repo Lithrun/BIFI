@@ -12,6 +12,7 @@ import nl.hu.sie.bep.bifi.group2.persistence.mysql.dao.CustomerDao;
 import java.util.ArrayList;
 
 import static org.easymock.EasyMock.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CustomerServiceTests {
 

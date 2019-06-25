@@ -1,24 +1,28 @@
 package nl.hu.sie.bep.bifi.group2.persistence;
 
-import com.mongodb.*;
+import com.mongodb.MongoClient;
+import com.mongodb.MongoClientURI;
+import com.mongodb.MongoException;
 import com.mongodb.client.FindIterable;
-import nl.hu.sie.bep.bifi.group2.model.Invoice;
-import nl.hu.sie.bep.bifi.group2.model.InvoiceLine;
-import org.bson.Document;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import org.bson.Document;
+
+import nl.hu.sie.bep.bifi.group2.model.Invoice;
+import nl.hu.sie.bep.bifi.group2.model.InvoiceLine;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class MongoReader {
     private ArrayList<Invoice> invoices = new ArrayList<Invoice>();
 
-    public ArrayList<Invoice> getAllInvoices () {
+    public ArrayList<Invoice> getAllInvoices() {
         MongoCollection<Document> mongoCollection = connectToDatabase();
 
         FindIterable<Document> documents = mongoCollection.find();
 
-        for (Document document : documents){
+        for (Document document : documents) {
             fillInvoice(document);
         }
 
@@ -66,7 +70,7 @@ public class MongoReader {
         invoiceLine.setProductId(line.getInteger("productId"));
         invoiceLine.setProductName(line.getString("productName"));
         invoiceLine.setQuantity(line.getInteger("quantity"));
-        invoiceLine.setTotalPrice(line.getInteger("totalPrice"));
+//        invoiceLine.setTotalPrice(line.getInteger("totalPrice"));
         invoiceLine.setUnit(line.getString("unit"));
         invoice.setInvoiceLine(invoiceLine);
     }
