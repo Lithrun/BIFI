@@ -17,7 +17,7 @@ public class AddressDao {
     private char type;
 
     @Column(name="Huisnummer")
-    private Integer streetNumber;
+    private String streetNumber;
 
     @Column(name="postcode")
     private String zipCode;
@@ -56,11 +56,11 @@ public class AddressDao {
         this.type = type;
     }
 
-    public int getStreetNumber() {
+    public String getStreetNumber() {
         return streetNumber;
     }
 
-    public void setStreetNumber(int streetNumber) {
+    public void setStreetNumber(String streetNumber) {
         this.streetNumber = streetNumber;
     }
 

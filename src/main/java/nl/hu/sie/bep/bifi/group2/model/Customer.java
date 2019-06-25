@@ -1,5 +1,7 @@
 package nl.hu.sie.bep.bifi.group2.model;
 
+import nl.hu.sie.bep.bifi.group2.persistence.mysql.dao.CustomerDao;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,6 +19,31 @@ public class Customer
     private int customerId;
     private List<Invoice> invoices = new ArrayList<>();
     private int personId;
+    
+    public static Customer fromCustomerDao(CustomerDao dao)
+	{
+		var customer = new Customer();
+		customer.setCustomerId(dao.getId());
+		customer.setCompanyName(dao.getCompanyName());
+		customer.setSalutation(dao.getSalutation());
+		
+		var person = dao.getPerson();
+		customer.setName(person.getFirstName());
+		customer.setInsertion(person.getInsertion());
+		customer.setLastName(person.getLastName());
+		
+		var address = new Address();
+		var addressDao = dao.getAddresses().get(0);
+		
+		address.setStreet(addressDao.getStreet());
+		address.setStreetNumber(addressDao.getStreetNumber());
+		address.setPostalCode(addressDao.getZipCode());
+		address.setCity(addressDao.getCity());
+		
+		customer.setAddress(address);
+		
+		return customer;
+	}
 
 	public String getCompanyName()
 	{
@@ -131,4 +158,14 @@ public class Customer
     public void setPersonId(int personId) {
         this.personId = personId;
     }
+
+	public void addInvoices(Invoice invoice)
+	{
+	    if (invoices == null)
+		{
+			invoices = new ArrayList<>();
+		}
+	    
+	    invoices.add(invoice);
+	}
 }

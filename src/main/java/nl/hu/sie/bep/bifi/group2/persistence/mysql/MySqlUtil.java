@@ -12,17 +12,25 @@ public class MySqlUtil {
     	//This constructor should be empty
     }
 
-    public static SessionFactory getSessionFactory() {
-        if (sessionFactory == null) {
-            try {
-                Configuration config = new Configuration();
-                config.configure("mysql/hibernate.cfg.xml");
-                sessionFactory = config.buildSessionFactory();
-            } catch (Exception exception) {
-                Logger logger = LoggerFactory.getLogger(MySqlUtil.class);
-                logger.info("getSessionFactory - Exception", exception);
-            }
+    public static SessionFactory createSessionFactory() 
+    {
+        if (sessionFactory != null)
+        {
+            return sessionFactory;
         }
-        return sessionFactory;
+        
+        try 
+        {
+            Configuration config = new Configuration();
+            config.configure("mysql/hibernate.cfg.xml");
+            sessionFactory = config.buildSessionFactory();
+            return sessionFactory;
+        } 
+        catch (Exception exception) 
+        {
+            Logger logger = LoggerFactory.getLogger(MySqlUtil.class);
+            logger.info("getSessionFactory - Exception", exception);
+            return null;
+        }
     }
 }

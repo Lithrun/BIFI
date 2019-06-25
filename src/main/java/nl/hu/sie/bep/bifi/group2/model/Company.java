@@ -1,5 +1,7 @@
 package nl.hu.sie.bep.bifi.group2.model;
 
+import nl.hu.sie.bep.bifi.group2.persistence.mysql.dao.CustomerDao;
+
 public class Company
 {
 	private String name;
@@ -8,6 +10,14 @@ public class Company
 	private String bic;
 	private Address address;
 	private Customer[] customers;
+	
+	public static Company fromCustomer(CustomerDao dao)
+	{
+		var company = new Company();
+		company.setName(dao.getCompanyName());
+		
+		return company;
+	}	
 
 	public Customer[] getCustomers()
 	{

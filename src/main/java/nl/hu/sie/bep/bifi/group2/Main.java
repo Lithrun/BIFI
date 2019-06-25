@@ -1,76 +1,100 @@
 package nl.hu.sie.bep.bifi.group2;
 
-import nl.hu.sie.bep.bifi.group2.model.Address;
 import nl.hu.sie.bep.bifi.group2.model.Company;
-import nl.hu.sie.bep.bifi.group2.model.Customer;
 import nl.hu.sie.bep.bifi.group2.parser.FileParser;
+import nl.hu.sie.bep.bifi.group2.persistence.mongo.MongoReader;
+import nl.hu.sie.bep.bifi.group2.persistence.mysql.MySqlContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class Main
 {
-    private static final Logger LOGGER = LoggerFactory.getLogger(Main.class);
+    private final Logger LOGGER = LoggerFactory.getLogger(Main.class);
+    
+    private int month;
 
     public static void main (String[] args)
     {
-        var main = new Main();
-        var model = main.getCompany();
+        var main = new Main(args);
+        main.parse();
 
-        //parse
-        var parser = new FileParser(model);
-        var iefFile = parser.parse();
-
-        LOGGER.info("== file ==");
-        LOGGER.info(iefFile);
     }
-
-    private Company getCompany()
+    
+    public Main(String[] args)
     {
-        var companyAddress = new Address();
-        companyAddress.setCity("Utrecht");
-        companyAddress.setPostalCode("1234aa");
-        companyAddress.setStreet("Street");
-        companyAddress.setStreetNumber("21e");
-
-        var company = new Company();
-        company.setAddress(companyAddress);
-        company.setName("Company name");
-        company.setVatNumber("02349385");
-        company.setIban("INGB03NL0001234435");
-        company.setBic("ING");
-
-        var customers = getCustomers();
-        company.setCustomers(customers);
-
-        return company;
+        if (args.length != 1)
+        {
+            throw new IllegalArgumentException("No valid month has been given");
+        }
+        
+        var value = tryParseInt(args[0]);
+        if (value == null || value < 1 || value > 12)
+        {
+            throw new IllegalArgumentException("Invalid month");
+        }
     }
-
-    private Customer[] getCustomers()
+    
+    private void parse()
     {
-        var customer1Address = new Address();
-        customer1Address.setCity("Utrecht");
-        customer1Address.setPostalCode("4321bb");
-        customer1Address.setStreet("Street");
-        customer1Address.setStreetNumber("21");
+        var companies = getCompanies();
+        for (var company : companies)
+        {
+            var parser = new FileParser(company);
+            var iefFile = parser.parse();
 
-        var customer1 = new Customer();
-        customer1.setCompanyName("A company");
-        customer1.setSalutation("Dhr");
-        customer1.setName("Piet");
-        customer1.setInsertion("van");
-        customer1.setLastName("Test persoon");
-        customer1.setAddress(customer1Address);
-        customer1.setVatNumber("jdfhkjgf");
-        customer1.setIban("INGB03NL9874356iuh");
-        customer1.setBic("lkfdg");
+            LOGGER.info("== file ==");
+            LOGGER.info(iefFile);
 
-        var customer2 = new Customer();
+            System.out.println(iefFile);
+        }
+    }
+    
+    private Company[] getCompanies()
+    {
+        var mongoDb = new MongoReader();
+        var invoices = mongoDb.getAllInvoices();
+        
+        var context = new MySqlContext();
+        var companies = context.getCompanies();
+        
+        for (var company : companies)
+        {
+            var customers = context.getCustomers(company.getName());
 
-        return new Customer[]
+            for (var customer : customers)
+            {
+                for (var invoice : invoices)
                 {
-                        customer1,
-                        customer2
-                };
+                    if (invoice.getCustomerId() != customer.getCustomerId())
+                    {
+                        continue;
+                    }
+                    
+                    if (invoice.getDate().getMonth() != month)
+                    {
+                        continue;
+                    }
+                    
+                    customer.addInvoices(invoice);
+                }
+            }
+            
+            company.setCustomers(customers);
+        }
+        
+        return companies;
+    }
+    
+    private Integer tryParseInt(String value)
+    {
+        try
+        {
+            return Integer.parseInt(value);
+        }
+        catch (NumberFormatException e)
+        {
+            return null;
+        }
     }
 
 }
