@@ -1,11 +1,11 @@
 package nl.hu.sie.bep.bifi.group2.services;
 
+import nl.hu.sie.bep.bifi.group2.services.customer.CustomerService;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
 import nl.hu.sie.bep.bifi.group2.persistence.mysql.dao.CustomerDao;
 
@@ -29,7 +29,7 @@ public class CustomerServiceTests {
 
     @Test
     public void getAll_ShouldReturnAllCustomers() {
-        var service = new CustomerService(sessionFactory);
+        var service = new CustomerService();
         var daos = new ArrayList<CustomerDao>() {{
             new CustomerDao();
             new CustomerDao();
@@ -48,7 +48,7 @@ public class CustomerServiceTests {
         replay(session);
         replay(query);
 
-        var customers = service.getAll();
+        var customers = service.getAllCustomers();
 
         assertEquals(customers.size(), daos.size());
 

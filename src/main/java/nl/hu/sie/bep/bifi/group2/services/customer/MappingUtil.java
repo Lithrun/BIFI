@@ -1,4 +1,4 @@
-package nl.hu.sie.bep.bifi.group2.services;
+package nl.hu.sie.bep.bifi.group2.services.customer;
 
 import com.github.dozermapper.core.DozerBeanMapperBuilder;
 import com.github.dozermapper.core.Mapper;

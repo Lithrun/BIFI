@@ -1,6 +1,6 @@
 package nl.hu.sie.bep.bifi.group2.model;
 
-import nl.hu.sie.bep.bifi.group2.persistence.mysql.dao.CustomerDao;
+import java.util.List;
 
 public class Company
 {
@@ -9,9 +9,9 @@ public class Company
 	private String iban;
 	private String bic;
 	private Address address;
-	private Customer[] customers;
+	private List<Customer> customers;
 	
-	public static Company fromCustomer(CustomerDao dao)
+	public static Company fromCustomer(Customer dao)
 	{
 		var company = new Company();
 		company.setName(dao.getCompanyName());
@@ -19,12 +19,12 @@ public class Company
 		return company;
 	}	
 
-	public Customer[] getCustomers()
+	public List<Customer> getCustomers()
 	{
 		return customers;
 	}
 
-	public void setCustomers(Customer[] customers)
+	public void setCustomers(List<Customer> customers)
 	{
 		this.customers = customers;
 	}

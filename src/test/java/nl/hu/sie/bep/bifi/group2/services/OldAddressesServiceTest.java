@@ -2,9 +2,10 @@ package nl.hu.sie.bep.bifi.group2.services;
 
 import nl.hu.sie.bep.bifi.group2.model.Address;
 import nl.hu.sie.bep.bifi.group2.model.Customer;
+import nl.hu.sie.bep.bifi.group2.services.address.OldAddressesService;
 import org.easymock.EasyMockSupport;
 import org.easymock.TestSubject;
-import nl.hu.sie.bep.bifi.group2.services.generic.IOldAddressesService;
+import nl.hu.sie.bep.bifi.group2.services.address.IOldAddressesService;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -46,11 +47,11 @@ public class OldAddressesServiceTest extends EasyMockSupport {
 
     @Test
     public void getByCustomerWithOldAddressTest() {
-        customerStub.setAddress(getFakeAddressWithExistingOldAddressKey());
+        var address = getFakeAddressWithExistingOldAddressKey();
 
         Address expectedAddress = getExpectedAddressForFakeAddressWithExistingOldAddressKey();
 
-        Address result = testSubject.getByCustomer(customerStub);
+        Address result = testSubject.getByCustomer(address);
 
         assertEquals(expectedAddress.getStreet(), result.getStreet());
         assertEquals(expectedAddress.getStreetNumber(), result.getStreetNumber());
@@ -60,13 +61,13 @@ public class OldAddressesServiceTest extends EasyMockSupport {
 
     @Test
     public void getByCustomerWithInvalidAddressTest() {
-        customerStub.setAddress(getFakeAddressWithNonExistingOldAddressKey());
-        assertNull(testSubject.getByCustomer(customerStub));
+        var address = getFakeAddressWithExistingOldAddressKey();
+        assertNull(testSubject.getByCustomer(address));
     }
 
     @Test
     public void getByCustomerWithUnsupportedAddressTest() {
-        customerStub.setAddress(getFakeAddressWithInvalidOldAddressKey());
-        assertEquals(customerStub.getAddress(), testSubject.getByCustomer(customerStub));
+        var address = getFakeAddressWithExistingOldAddressKey();
+        assertEquals(customerStub.getAddress(), testSubject.getByCustomer(address));
     }
 }

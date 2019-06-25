@@ -3,7 +3,7 @@ package nl.hu.sie.bep.bifi.group2;
 import nl.hu.sie.bep.bifi.group2.model.Company;
 import nl.hu.sie.bep.bifi.group2.parser.FileParser;
 import nl.hu.sie.bep.bifi.group2.persistence.mongo.MongoReader;
-import nl.hu.sie.bep.bifi.group2.persistence.mysql.MySqlContext;
+import nl.hu.sie.bep.bifi.group2.services.company.CompanyService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -36,7 +36,9 @@ public class Main
     
     private void parse()
     {
-        var companies = getCompanies();
+        var companyService = new CompanyService();
+        var companies = companyService.getCompanies(month);
+        
         for (var company : companies)
         {
             var parser = new FileParser(company);
@@ -47,42 +49,6 @@ public class Main
 
             System.out.println(iefFile);
         }
-    }
-    
-    private Company[] getCompanies()
-    {
-        var mongoDb = new MongoReader();
-        var invoices = mongoDb.getAllInvoices();
-        
-        var context = new MySqlContext();
-        var companies = context.getCompanies();
-        
-        for (var company : companies)
-        {
-            var customers = context.getCustomers(company.getName());
-
-            for (var customer : customers)
-            {
-                for (var invoice : invoices)
-                {
-                    if (invoice.getCustomerId() != customer.getCustomerId())
-                    {
-                        continue;
-                    }
-                    
-                    if (invoice.getDate().getMonth() != month)
-                    {
-                        continue;
-                    }
-                    
-                    customer.addInvoices(invoice);
-                }
-            }
-            
-            company.setCustomers(customers);
-        }
-        
-        return companies;
     }
     
     private Integer tryParseInt(String value)
