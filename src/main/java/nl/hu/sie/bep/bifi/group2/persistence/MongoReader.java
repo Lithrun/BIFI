@@ -17,9 +17,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MongoReader {
-    private ArrayList<Invoice> invoices = new ArrayList<Invoice>();
+    private ArrayList<Invoice> invoices = new ArrayList<>();
 
-    public ArrayList<Invoice> getAllInvoices() {
+    public List<Invoice> getAllInvoices() {
         MongoCollection<Document> mongoCollection = connectToDatabase();
 
         FindIterable<Document> documents = mongoCollection.find();
@@ -33,12 +33,11 @@ public class MongoReader {
 
     public MongoCollection<Document> connectToDatabase() {
         MongoClientURI uri = new MongoClientURI("mongodb+srv://Nynke:Tester123@clusterfriendspammer-fvgbf.mongodb.net/test?retryWrites=true&w=majority");
-        MongoClient mongoClient = null;
+        MongoClient mongoClient = new MongoClient(uri);
         MongoCollection<Document> mongoCollection = null;
         MongoDatabase database;
 
-        try {
-            mongoClient = new MongoClient(uri);
+        try (mongoClient){
             database = mongoClient.getDatabase("BiFiBEP02");
             mongoCollection = database.getCollection("bifi");
         }
@@ -74,7 +73,7 @@ public class MongoReader {
         invoiceLine.setProductId(line.getInteger("productId"));
         invoiceLine.setProductName(line.getString("productName"));
         invoiceLine.setQuantity(line.getInteger("quantity"));
-//        invoiceLine.setTotalPrice(line.getInteger("totalPrice"));
+// TODO: fix        invoiceLine.setTotalPrice(line.getInteger("totalPrice"));
         invoiceLine.setUnit(line.getString("unit"));
         invoice.setInvoiceLine(invoiceLine);
     }
