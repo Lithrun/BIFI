@@ -13,7 +13,7 @@ import parser.ParserUtils;
 public class CompanyParser extends ParserUtils implements IParser<Company>
 {
     @Override
-    public void Parse(FileBuilder builder, Company model)
+    public void parse(FileBuilder builder, Company model)
     {
         var address = GetAddress(model);
         
@@ -32,16 +32,13 @@ public class CompanyParser extends ParserUtils implements IParser<Company>
             Shorten(10, model.getBic()),
         };
         
-        builder.Add(items);
+        builder.add(items);
     }
     
     private Address GetAddress(Company model)
     {
         var address = model.getAddress();
-        if (address == null)
-        {
-            return new Address();
-        }
+        if (address == null) { return new Address(); }
         
         return address;
     }

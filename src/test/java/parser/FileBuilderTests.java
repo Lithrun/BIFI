@@ -9,12 +9,12 @@ public class FileBuilderTests
     @Test
     public void FileBuilderTestOneLine()
     {
-        var fileBuilder = new FileBuilder();
+        FileBuilder fileBuilder = new FileBuilder();
         
-        fileBuilder.Add("hallo");
-        fileBuilder.Add("test");
-        fileBuilder.Add("world");
-        var build = fileBuilder.Build();
+        fileBuilder.add("hallo");
+        fileBuilder.add("test");
+        fileBuilder.add("world");
+        var build = fileBuilder.build();
         
         assertEquals("hallo,test,world", build);
     }
@@ -24,15 +24,15 @@ public class FileBuilderTests
     {
         var fileBuilder = new FileBuilder();
 
-        fileBuilder.Add("hallo");
-        fileBuilder.Add("test");
-        fileBuilder.Add("world");
-        fileBuilder.NextLine();
-        fileBuilder.Add("world");
-        fileBuilder.Add("test");
-        fileBuilder.Add("hello");
+        fileBuilder.add("hallo");
+        fileBuilder.add("test");
+        fileBuilder.add("world");
+        fileBuilder.nextLine();
+        fileBuilder.add("world");
+        fileBuilder.add("test");
+        fileBuilder.add("hello");
         
-        var build = fileBuilder.Build();
+        var build = fileBuilder.build();
 
         assertEquals("hallo,test,world\nworld,test,hello", build);
     }
@@ -42,11 +42,11 @@ public class FileBuilderTests
     {
         var fileBuilder = new FileBuilder();
 
-        fileBuilder.Add("hallo ");
-        fileBuilder.Add(" test");
-        fileBuilder.Add("world ");
+        fileBuilder.add("hallo ");
+        fileBuilder.add(" test");
+        fileBuilder.add("world ");
 
-        var build = fileBuilder.Build();
+        var build = fileBuilder.build();
 
         assertEquals("hallo , test,world ", build);
     }
@@ -62,9 +62,9 @@ public class FileBuilderTests
             "test",
             "world"
         };
-        fileBuilder.Add(items);
+        fileBuilder.add(items);
 
-        var build = fileBuilder.Build();
+        var build = fileBuilder.build();
 
         assertEquals("hallo,test,world", build);
     }
@@ -80,9 +80,9 @@ public class FileBuilderTests
             "test",
             "world"
         };
-        fileBuilder.Add(items);
+        fileBuilder.add(items);
 
-        var build = fileBuilder.Build();
+        var build = fileBuilder.build();
 
         assertEquals("hallo\\,,test,world", build);
     }

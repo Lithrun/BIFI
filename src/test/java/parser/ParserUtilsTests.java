@@ -9,18 +9,18 @@ import static org.junit.Assert.assertEquals;
 
 public class ParserUtilsTests
 {
-    private ParserUtils _utils;
+    private ParserUtils utils;
     
     @Before
     public void Before()
     {
-        _utils = new ParserUtils();
+        utils = new ParserUtils();
     }
     
     @Test
     public void ParserUtilsTestShortenOverSized()
     {
-        var result = _utils.Shorten(10, "12345678901");
+        var result = utils.shortenStringValue(10, "12345678901");
         
         assertEquals("1234567890", result);
     }
@@ -28,7 +28,7 @@ public class ParserUtilsTests
     @Test
     public void ParserUtilsTestShortenNull()
     {
-        var result = _utils.Shorten(10, null);
+        var result = utils.shortenStringValue(10, null);
 
         assertEquals("", result);
     }
@@ -36,7 +36,7 @@ public class ParserUtilsTests
     @Test
     public void ParserUtilsTestShortenNormal()
     {
-        var result = _utils.Shorten(10, "test");
+        var result = utils.shortenStringValue(10, "test");
 
         assertEquals("test", result);
     }
@@ -44,7 +44,7 @@ public class ParserUtilsTests
     @Test
     public void ParserUtilsTestShortenEdgeCase()
     {
-        var result = _utils.Shorten(10, "1234567890");
+        var result = utils.shortenStringValue(10, "1234567890");
 
         assertEquals("1234567890", result);
     }
@@ -52,28 +52,32 @@ public class ParserUtilsTests
     @Test
     public void ParserUtilsTestFormatDateNull()
     {
-        var result = _utils.Format(null);
+        var result = utils.formatDate(null);
         
         assertEquals("", result);
     }
-    
+
+    //TODO one assert per unit test!
+
     @Test
     public void ParserUtilsTestFormatDateValid()
     {
-        assertEquals("010390",  _utils.Format(new Date(1990, 2, 1)));
-        assertEquals("090818",  _utils.Format(new Date(2018, 7, 9)));
-        assertEquals("190818",  _utils.Format(new Date(2018, 7, 19)));
+        assertEquals("010390",  utils.formatDate(new Date(1990, 2, 1)));
+        assertEquals("090818",  utils.formatDate(new Date(2018, 7, 9)));
+        assertEquals("190818",  utils.formatDate(new Date(2018, 7, 19)));
 
     }
+
+    //TODO one assert per unit test!
     
     @Test
     public void ParserUtilsTestFormatDoubleValid()
     {
-        assertEquals("0000520", _utils.Format(5, 2, 5.2));
-        assertEquals("1520", _utils.Format(2, 2, 15.2));
-        assertEquals("11520", _utils.Format(2, 2, 115.2));
-        assertEquals("1152000", _utils.Format(2, 4, 115.2));
-        assertEquals("1152", _utils.Format(2, 1, 115.2));
+        assertEquals("0000520", utils.formatValue(5, 2, 5.2));
+        assertEquals("1520", utils.formatValue(2, 2, 15.2));
+        assertEquals("11520", utils.formatValue(2, 2, 115.2));
+        assertEquals("1152000", utils.formatValue(2, 4, 115.2));
+        assertEquals("1152", utils.formatValue(2, 1, 115.2));
     }
 
 }

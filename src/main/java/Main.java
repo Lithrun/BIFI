@@ -13,7 +13,7 @@ public class Main
 
         //parse
         var parser = new FileParser(model);
-        var iefFile = parser.Parse();
+        var iefFile = parser.parse();
 
         System.out.println("== file ==");
         System.out.println(iefFile);
@@ -38,7 +38,7 @@ public class Main
         company.setVatNumber("02349385");
         company.setIban("INGB03NL0001234435");
         company.setBic("ING");
-        
+
         var customers = GetCustomers();
         company.setCustomers(customers);
 
@@ -52,7 +52,7 @@ public class Main
         customer1Address.setPostalCode("4321bb");
         customer1Address.setStreet("Street");
         customer1Address.setStreetNumber("21");
-        
+
         var customer1 = new Customer();
         customer1.setCompanyName("A company");
         customer1.setSalutation("Dhr");
@@ -63,27 +63,27 @@ public class Main
         customer1.setVatNumber("jdfhkjgf");
         customer1.setIban("INGB03NL9874356iuh");
         customer1.setBic("lkfdg");
-        
+
         var invoiceLines = GetInvoiceLineCustomer1();
         customer1.setInvoiceLines(invoiceLines);
-        
+
         var customer2 = new Customer();
-        
+
         return new Customer[]
-        {
-            customer1,
-            customer2
-        };
+                {
+                        customer1,
+                        customer2
+                };
     }
-    
+
     private InvoiceLine[] GetInvoiceLineCustomer1()
     {
         var invoiceLine = new InvoiceLine();
-        
+
         return new InvoiceLine[]
-        {
-            invoiceLine      
-        };
+                {
+                        invoiceLine
+                };
     }
 
 
