@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-//TODO Niet op een live database testen!!!!!
 public class MongoReaderTester {
     private MongoReader mongoReader;
 
