@@ -9,8 +9,7 @@ import java.beans.PropertyDescriptor;
 import java.lang.reflect.Array;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.ParameterizedType;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
@@ -67,6 +66,11 @@ public class FileParser<T>
             if (value == null) continue;
             if(type.isArray())
             {
+                handleArray(builder, value);
+            }
+            else if (type == List.class)
+            {
+                value = ((List)value).toArray();
                 handleArray(builder, value);
             }
 

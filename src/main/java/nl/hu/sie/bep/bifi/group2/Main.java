@@ -30,6 +30,8 @@ public class Main
         {
             throw new IllegalArgumentException("Invalid month");
         }
+        
+        month = value;
     }
     
     private void parse()
