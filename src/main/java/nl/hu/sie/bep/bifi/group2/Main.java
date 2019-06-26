@@ -44,6 +44,7 @@ public class Main
 
             logger.info("== file ==");
             logger.info(iefFile);
+            System.out.println(iefFile);
         }
     }
     
